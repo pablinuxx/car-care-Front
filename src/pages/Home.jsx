@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import BrandsHome from "../components/BrandsHome";
-import InfoHome from "../components/InfoHome";
-import GoServices from "../components/GoServices";
-import GoDate from "../components/GoDate";
+import Navbar from "../components/allPagesComponents/Navbar";
+import Footer from "../components/allPagesComponents/Footer";
+import BrandsHome from "../components/homeComponents/BrandsHome";
+import InfoHome from "../components/homeComponents/InfoHome";
+import GoServices from "../components/homeComponents/GoServices";
+import GoDate from "../components/homeComponents/GoDate";
 function Home() {
   return (
     <>

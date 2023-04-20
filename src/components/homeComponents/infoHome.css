@@ -1,0 +1,14 @@
+.info-home {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: var(--brand-red-brown);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-info {
+  font-size: 30px !important;
+  color: whitesmoke !important;
+}

@@ -1,0 +1,14 @@
+.bg-navbar {
+  background: linear-gradient(135deg, #33414c 70%, #87403e 30%);
+}
+.text-navbar {
+  text-decoration: none;
+  color: white !important;
+  padding: 10px;
+  font-weight: 600 !important;
+}
+
+.img-nav {
+  height: 50px;
+  width: 50px;
+}
