@@ -15,7 +15,7 @@ function ToServices() {
           variant="outline-light"
           href="#"
         >
-          Go
+          Our Services
         </Button>
       </div>
     </div>
