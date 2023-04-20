@@ -1,0 +1,11 @@
+.services-box {
+  height: 450px;
+  background-color: #87403e;
+}
+.data-box {
+  height: 450px;
+  background-color: #33414c;
+}
+.to-services-btn {
+  width: 10rem;
+}
