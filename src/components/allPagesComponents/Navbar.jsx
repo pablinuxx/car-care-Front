@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 function Navbar() {
   const [brandsList, setBrandsList] = useState([]);
+
   useEffect(() => {
     const getBrands = async () => {
       const response = await axios({
@@ -19,13 +20,13 @@ function Navbar() {
     <>
       <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="#">
             <img
               src="img/CarCare1.png"
               alt="car-care-logo"
               className="img-nav"
             />
-          </a>
+          </Link>
 
           <button
             className="navbar-toggler"
@@ -44,62 +45,49 @@ function Navbar() {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
               <li className="nav-item ">
-                <a
+                <Link
                   className="nav-link active text-navbar"
                   aria-current="page"
-                  href="/"
+                  to="/"
                 >
                   Home
-                </a>
+                </Link>
               </li>
-
               <li className="nav-item dropdown">
-                <a
+                <Link
                   className="nav-link dropdown-toggle text-navbar"
-                  href="#"
+                  to="#"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Brands
-                </a>
-                <ul className="dropdown-menu">
-                  {brandsList &&
-                    brandsList.map((brand)=>(
-                    <Link key={brand.id} state={brand}  to={`/${brand.name}`}>
-                    <li >
-                    <a className="dropdown-item" href="#">
-                      {brand.name}
-                    </a>
-                  </li>
-                  </Link>
-
-                    ))
-                  }
-                  
-                    brandsList.map((brand) => (
-                      <li key={brand.id}>
-                        <a className="dropdown-item" href="#">
-                          {brand.name}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
+                </Link>
+                <div>
+                  <ul className="dropdown-menu">
+                    {brandsList &&
+                      brandsList.map((brand) => (
+                        <li key={brand.id} className="p-1">
+                          <Link to="#">{brand.name}</Link>
+                        </li>
+                      ))}
+                  </ul>
+                </div>
               </li>
               <li className="nav-item ">
-                <a className="nav-link text-navbar" href="/services">
+                <Link className="nav-link text-navbar" to="/services">
                   Services
-                </a>
+                </Link>
               </li>
               <li className="nav-item ">
-                <a className="nav-link text-navbar" href="#">
+                <Link className="nav-link text-navbar" to="#">
                   About us
-                </a>
+                </Link>
               </li>
               <li className="nav-item ">
-                <a className="nav-link text-navbar" href="#">
+                <Link className="nav-link text-navbar" to="#">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
