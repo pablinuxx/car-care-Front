@@ -12,7 +12,7 @@ function Home() {
       <Navbar />
       <CarouselFadeExample />
       <BrandsHome />
-      <div className="content-fluid mt-5 mb-5">
+      <div className="container-fluid mt-5 mb-5">
         <div className="row ">
           <GoServices />
           <GoDate />

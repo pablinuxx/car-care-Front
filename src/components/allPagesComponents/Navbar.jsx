@@ -38,16 +38,7 @@ function Navbar() {
                   Home
                 </a>
               </li>
-              <li className="nav-item ">
-                <a className="nav-link text-navbar" href="#">
-                  Brands
-                </a>
-              </li>
-              <li className="nav-item ">
-                <a className="nav-link text-navbar" href="#">
-                  About us
-                </a>
-              </li>
+
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle text-navbar"
@@ -56,30 +47,50 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Services
+                  Brands
                 </a>
                 <ul className="dropdown-menu">
                   <li>
                     <a className="dropdown-item" href="#">
-                      Maintenance service
+                      Fiat
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Alignment and balance
+                      Kia
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Oil change
+                      Chevrolet
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="#">
-                      Car washed
+                      Toyota
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Volkswagen
                     </a>
                   </li>
                 </ul>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link text-navbar" href="/services">
+                  Services
+                </a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link text-navbar" href="#">
+                  About us
+                </a>
+              </li>
+              <li className="nav-item ">
+                <a className="nav-link text-navbar" href="#">
+                  Contact
+                </a>
               </li>
             </ul>
           </div>
