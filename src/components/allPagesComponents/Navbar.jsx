@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react";
 import "./navbar.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function Navbar() {
 const [brandsList, setBrandsList] = useState([])
   useEffect(() => {
@@ -67,11 +68,13 @@ const [brandsList, setBrandsList] = useState([])
                 <ul className="dropdown-menu">
                   {brandsList &&
                     brandsList.map((brand)=>(
-                      <li key={brand.id}>
+                    <Link key={brand.id} state={brand}  to={`/${brand.name}`}>
+                    <li >
                     <a className="dropdown-item" href="#">
                       {brand.name}
                     </a>
                   </li>
+                  </Link>
 
                     ))
                   }
