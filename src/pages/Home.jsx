@@ -6,6 +6,7 @@ import InfoHome from "../components/homeComponents/InfoHome";
 import GoServices from "../components/homeComponents/GoServices";
 import GoDate from "../components/homeComponents/GoDate";
 import CarouselFadeExample from "../components/homeComponents/Carrousel";
+
 function Home() {
   return (
     <>
@@ -16,9 +17,10 @@ function Home() {
         <div className="row ">
           <GoServices />
           <GoDate />
+          <InfoHome />
         </div>
       </div>
-      <InfoHome />
+      <div></div>
       <Footer />
     </>
   );

@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
-
+import axios from "axios";
 function Navbar() {
+  const [brandsList, setBrandsList] = useState([]);
+  useEffect(() => {
+    const getBrands = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_APP_API_URL}/brands`,
+      });
+      setBrandsList(response.data);
+    };
+    getBrands();
+  }, []);
+
   return (
     <>
       <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
@@ -51,31 +63,14 @@ function Navbar() {
                   Brands
                 </a>
                 <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Fiat
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Kia
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Chevrolet
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Toyota
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Volkswagen
-                    </a>
-                  </li>
+                  {brandsList &&
+                    brandsList.map((brand) => (
+                      <li key={brand.id}>
+                        <a className="dropdown-item" href="#">
+                          {brand.name}
+                        </a>
+                      </li>
+                    ))}
                 </ul>
               </li>
               <li className="nav-item ">
