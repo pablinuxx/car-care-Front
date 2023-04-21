@@ -1,72 +1,56 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
+import axios from "axios";
+import Footer from "../components/allPagesComponents/Footer";
+
 import Navbar from "../components/allPagesComponents/Navbar";
 
 function Services() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const getServices = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_APP_API_URL}/services`,
+      });
+      console.log(services);
+      setServices(response.data);
+    };
+    getServices();
+  }, []);
+
   return (
-    <>
-      <Navbar />
-      <div className="container">
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-          <div class="col">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
+    services && (
+      <>
+        <Navbar />
+        <div className="bg-secondary mt-4 text-center"> HERO</div>
+        <div className="container mt-5">
+          <div className="row row-cols-1 row-cols-md-2 g-4">
+            {services.map((service) => {
+              return (
+                <div key={service.id} className="col ">
+                  <div className="card h-100">
+                    <img
+                      src={`${import.meta.env.VITE_APP_API_URL}/img/services/${
+                        service.image
+                      }`}
+                      className="card-img-top"
+                      alt="service"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{service.name}</h5>
+                      <p className="card-text">{service.description}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          <div class="col">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <img src="..." class="card-img-top" alt="..." />
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  This is a longer card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-              </div>
-            </div>
-          </div>
+          <div className="bg-secondary mt-5 text-center"> Agenda</div>
         </div>
-      </div>
-      <ul>
-        <li> Maintenance service</li>
-        <li> Alignment and balance</li>
-        <li>Oil change</li>
-        <li> Car washed</li>
-      </ul>
-    </>
+        <Footer />
+      </>
+    )
   );
 }
 

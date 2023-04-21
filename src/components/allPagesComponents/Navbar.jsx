@@ -1,22 +1,20 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 function Navbar() {
-const [brandsList, setBrandsList] = useState([])
+  const [brandsList, setBrandsList] = useState([]);
   useEffect(() => {
-  const getBrands= async()=>{
+    const getBrands = async () => {
       const response = await axios({
-        method:"GET",
+        method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands`,
-      })
-      setBrandsList(response.data)
-      
-      
-    }
-    getBrands()
-  }, [])
-  
+      });
+      setBrandsList(response.data);
+    };
+    getBrands();
+  }, []);
+
   return (
     <>
       <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
@@ -79,6 +77,13 @@ const [brandsList, setBrandsList] = useState([])
                     ))
                   }
                   
+                    brandsList.map((brand) => (
+                      <li key={brand.id}>
+                        <a className="dropdown-item" href="#">
+                          {brand.name}
+                        </a>
+                      </li>
+                    ))}
                 </ul>
               </li>
               <li className="nav-item ">
