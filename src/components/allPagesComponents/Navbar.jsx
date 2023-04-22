@@ -2,8 +2,20 @@ import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Avatar } from "@chakra-ui/react";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { setLoggedUser } from "../../redux/sessionReducer";
+import { useSelector, useDispatch } from "react-redux";
+
 function Navbar() {
   const [brandsList, setBrandsList] = useState([]);
+
+  const loggedUser = useSelector((state) => state.session);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(setLoggedUser({ token: null, user: null }));
+  };
 
   useEffect(() => {
     const getBrands = async () => {
@@ -39,11 +51,8 @@ function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className="collapse navbar-collapse "
-            id="navbarSupportedContent"
-          >
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0 ">
               <li className="nav-item ">
                 <Link
                   className="nav-link active text-navbar"
@@ -89,6 +98,44 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
+              <div className="d-flex align-items-center">
+                <Avatar
+                  name="Dan Abrahmov"
+                  src={
+                    loggedUser.token
+                      ? `${import.meta.env.VITE_APP_API_URL}/img/users/${
+                          loggedUser.avatar
+                        }`
+                      : `${
+                          import.meta.env.VITE_APP_API_URL
+                        }/img/users/no_user_log.webp`
+                  }
+                  alt={
+                    loggedUser.token
+                      ? `${loggedUser.firstname}`
+                      : "user picture"
+                  }
+                  className="navbar-avatar ms-3 ms-lg-4"
+                />
+                <NavDropdown id="basic-nav-dropdown">
+                  {loggedUser.token ? (
+                    <>
+                      <NavDropdown.Item href="#">Reservations</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item onClick={handleLogout}>
+                        Logout
+                      </NavDropdown.Item>
+                    </>
+                  ) : (
+                    <>
+                      <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                      <NavDropdown.Item href="/signup">
+                        Signup!
+                      </NavDropdown.Item>
+                    </>
+                  )}
+                </NavDropdown>
+              </div>
             </ul>
           </div>
         </div>

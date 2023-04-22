@@ -12,3 +12,10 @@
   height: 50px;
   width: 50px;
 }
+
+/* Avatar user navbar  */
+
+.navbar-avatar {
+  width: 2.2rem !important;
+  height: 2.2rem !important;
+}
