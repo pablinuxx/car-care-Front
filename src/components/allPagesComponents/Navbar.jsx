@@ -23,7 +23,7 @@ function Navbar() {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands`,
       });
-      console.log("response: ",response.data)
+      
       setBrandsList(response.data);
     };
     getBrands();

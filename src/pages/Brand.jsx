@@ -13,19 +13,20 @@ const Brand = () => {
   //   return partesNumero.join('.');
   // }
 
-  // const location = useLocation();
+   const location = useLocation();
   const [carsList, setCarsList] = useState([]);
   useEffect(() => {
     const getCarsxBrand = async () => {
       const response = await axios({
         method: "GET",
-        url: `${import.meta.env.VITE_APP_API_URL}/brands`,
+        url: `${import.meta.env.VITE_APP_API_URL}/brands/${location.state.id}`,
       });
+      
       setCarsList(response.data);
     };
 
     getCarsxBrand();
-  }, []);
+  }, [location.state.id]);
 
   return (
     <>
@@ -45,7 +46,7 @@ const Brand = () => {
                   id="svuType"
                   name="type"
                 />
-                <label class="form-check-label" htmlFor="svuType">
+                <label className="form-check-label" htmlFor="svuType">
                   SUV
                 </label>
               </div>
@@ -57,7 +58,7 @@ const Brand = () => {
                   id="autoType"
                   name="type"
                 />
-                <label class="form-check-label" for="autoType">
+                <label className="form-check-label" htmlFor="autoType">
                   Auto
                 </label>
               </div>
@@ -69,7 +70,7 @@ const Brand = () => {
                   id="pickupsType"
                   name="type"
                 />
-                <label class="form-check-label" htmlFor="pickupsType">
+                <label className="form-check-label" htmlFor="pickupsType">
                   PickUps
                 </label>
               </div>
@@ -86,7 +87,7 @@ const Brand = () => {
                   id="new"
                   name="condition"
                 />
-                <label class="form-check-label" htmlFor="new">
+                <label className="form-check-label" htmlFor="new">
                   New
                 </label>
               </div>
@@ -98,7 +99,7 @@ const Brand = () => {
                   id="used"
                   name="used"
                 />
-                <label class="form-check-label" for="used">
+                <label className="form-check-label" htmlFor="used">
                   Used
                 </label>
               </div>
@@ -107,14 +108,14 @@ const Brand = () => {
             <div className=" p-3 border rounded">
               <h5>Price ($)</h5>
               <div className="d-flex justify-content-between">
-                <label htmlFor="price" class="form-label">
+                <label htmlFor="price" className="form-label">
                   Min
                 </label>
-                <label htmlFor="price" class="form-label">
+                <label htmlFor="price" className="form-label">
                   Max
                 </label>
               </div>
-              <input type="range" class="form-range" id="customRange1"></input>
+              <input type="range" className="form-range" id="customRange1"></input>
             </div>
           </div>
 
@@ -127,12 +128,12 @@ const Brand = () => {
                       src={`${import.meta.env.VITE_APP_API_URL}/${
                         car.image[0]
                       }`}
-                      class="img-fluid rounded"
+                      className="img-fluid rounded"
                       alt={car.name}
                     />
                     <div className="card-body text-center p-0 ">
                       <h5 className="card-title fs-3">
-                        {`$` + separadorMiles(car.price)}
+                        {car.price}
                       </h5>
                     </div>
                     <div className="card-body">
