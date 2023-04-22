@@ -77,7 +77,7 @@ function Navbar() {
                   <ul className="dropdown-menu">
                     {brandsList &&
                       brandsList.map((brand) => (
-                        <Link key={brand.id} to={`/${brand.name}`}>
+                        <Link key={brand.id} to={`/${brand.name}` } state={brand}>
                         <li  className="p-1">
                           {brand.name}
                         </li>
