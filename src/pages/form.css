@@ -1,0 +1,119 @@
+/* Login Customer */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/public/img/login-customer.webp");
+  background-position: center;
+  background-size: cover;
+  /* color: #fff; */
+  color: #b7cedc;
+}
+
+.formulary {
+  padding: 3rem 1.5rem 3rem 1.5rem;
+  background-color: #ffffff2e;
+  backdrop-filter: blur(3px);
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* !!Ponerle Font  */
+/* .formulary-welcome-message h2 { 
+  font-family: "BerlingskeSerif";
+} */
+
+.formulary-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.formulary-welcome-message h2 {
+    font-size: 2.5rem;
+}
+
+.formulary-subtitle-cta {
+  margin-left: 0.35rem;
+  display: inline;
+  color: #87403ee2;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.create-account {
+  margin: 0 0 2rem 0;
+  font-size: 2.3rem;
+}
+
+.input-tx {
+  color: rgba(255, 255, 255, 0.762);
+}
+
+.input-tx::placeholder {
+  color: rgba(255, 255, 255, 0.762);
+}
+
+.input-tx:hover {
+  background-color: #87403e;
+}
+
+.log-in-btn {
+  padding: 0.65rem 0 0.65rem 0;
+  border-radius: 2rem;
+  width: 70%;
+  color: white;
+  background-color: #33414ce9;
+  font-size: 1.3rem;
+  font-weight: 200;
+  transition: background-color 0.15s ease-in-out 0.1s;
+}
+
+.log-in-btn:hover {
+  background-color: #28343d;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.border-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  transition: all 0.3s ease-in;
+}
+
+.formulary input {
+  width: 70%;
+  display: block;
+  margin: auto;
+  margin-bottom: 0.2rem;
+  background-color: #87403e94;
+  border: none;
+  border-bottom: #fff;
+  text-align: center;
+  outline: none;
+  padding: 0.2rem 0;
+  font-size: 0.9rem;
+  color: #b7cedc;
+  border-radius: 2rem;
+  height: 2.5rem;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+}
