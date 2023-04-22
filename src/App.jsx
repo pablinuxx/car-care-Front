@@ -5,6 +5,7 @@ import CreateAdmin from "./pages/CreateAdmin";
 import Services from "./pages/Services";
 import SignUpCustomer from "./pages/SignUpCustomer";
 import LoginCustomer from "./pages/LoginCustomer";
+import Brand from "./pages/Brand";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signup" element={<SignUpCustomer />} />;
         <Route path="/login" element={<LoginCustomer />} />;
         <Route path="*" element={<p>Error 404 page not found!</p>} />
+        <Route path="/:brand" element={<Brand/>} />
       </Routes>
     </>
   );

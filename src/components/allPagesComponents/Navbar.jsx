@@ -23,6 +23,7 @@ function Navbar() {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands`,
       });
+      console.log("response: ",response.data)
       setBrandsList(response.data);
     };
     getBrands();
@@ -76,9 +77,11 @@ function Navbar() {
                   <ul className="dropdown-menu">
                     {brandsList &&
                       brandsList.map((brand) => (
-                        <li key={brand.id} className="p-1">
-                          <Link to="#">{brand.name}</Link>
+                        <Link key={brand.id} to={`/${brand.name}`}>
+                        <li  className="p-1">
+                          {brand.name}
                         </li>
+                        </Link>
                       ))}
                   </ul>
                 </div>
