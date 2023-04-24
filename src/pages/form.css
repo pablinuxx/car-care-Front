@@ -18,6 +18,19 @@
   color: #b7cedc;
 }
 
+/* .container-login-form {
+  background-image: url("/public/img/fondo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vh;
+  
+} */
+
+.background-image {
+  background-image: url("/public/img/fondo.png");
+}
+
 .formulary {
   padding: 3rem 1.5rem 3rem 1.5rem;
   background-color: #ffffff2e;
@@ -116,4 +129,89 @@
 .input-field {
   display: flex;
   flex-direction: column;
+}
+
+/* Signup customer  */
+
+.formulary-sign-up {
+  border: 5px #87403e solid;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin: auto;
+  margin-top: 1rem !important;
+  background-color: #33414c;
+  color: #b7cedc;
+  z-index: 99;
+}
+
+@media (max-width: 575px) {
+  .formulary-sign-up {
+    width: 84% !important;
+  }
+}
+
+.header-logo {
+  display: flex;
+  /* border: 1px solid red; */
+  justify-content: space-between;
+}
+
+.logo {
+  max-width: 110px;
+  max-height: 110px;
+}
+
+.sign-in-strong {
+  color: #87403e;
+}
+
+.form-group {
+  position: relative !important;
+  color: #c7c7c7 !important;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-input {
+  width: 100%;
+  background: none;
+  color: #b7cedc;
+  padding: 0.6em 0.3em;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #b7cedc;
+}
+
+.form-input:focus {
+  border-bottom: 1px solid #87403e;
+}
+
+.form-input:active {
+  background-color: transparent !important;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  transform: translateY(-12px) scale(0.7);
+  transform-origin: left top;
+}
+
+.form-label {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  transform: translateY(10px);
+  transition: transform 0.3s, color 0.3s;
+}
+
+.btn-register {
+  background-color: #87403e !important;
+  padding: 0.5rem;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.action-confirm-login {
+  display: flex;
+  justify-content: center;
 }
