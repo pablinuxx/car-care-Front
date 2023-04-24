@@ -16,8 +16,8 @@ function App() {
         <Route path="/create/admin" element={<CreateAdmin />} />;
         <Route path="/signup" element={<SignUpCustomer />} />;
         <Route path="/login" element={<LoginCustomer />} />;
+        <Route path="/:brand" element={<Brand />} />
         <Route path="*" element={<p>Error 404 page not found!</p>} />
-        <Route path="/:brand" element={<Brand/>} />
       </Routes>
     </>
   );

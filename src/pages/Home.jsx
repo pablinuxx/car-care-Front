@@ -5,13 +5,13 @@ import BrandsHome from "../components/homeComponents/BrandsHome";
 import InfoHome from "../components/homeComponents/InfoHome";
 import GoServices from "../components/homeComponents/GoServices";
 import GoDate from "../components/homeComponents/GoDate";
-import CarouselFadeExample from "../components/homeComponents/Carrousel";
+import Carousel from "../components/homeComponents/CarouselHome";
 
 function Home() {
   return (
     <>
       <Navbar />
-      <CarouselFadeExample />
+      <Carousel />
       <BrandsHome />
       <div className="container-fluid mt-5 mb-5">
         <div className="row ">

@@ -13,7 +13,7 @@ const Brand = () => {
   //   return partesNumero.join('.');
   // }
 
-   const location = useLocation();
+  const location = useLocation();
   const [carsList, setCarsList] = useState([]);
   useEffect(() => {
     const getCarsxBrand = async () => {
@@ -21,7 +21,7 @@ const Brand = () => {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands/${location.state.id}`,
       });
-      
+
       setCarsList(response.data);
     };
 
@@ -115,7 +115,11 @@ const Brand = () => {
                   Max
                 </label>
               </div>
-              <input type="range" className="form-range" id="customRange1"></input>
+              <input
+                type="range"
+                className="form-range"
+                id="customRange1"
+              ></input>
             </div>
           </div>
 
@@ -132,9 +136,7 @@ const Brand = () => {
                       alt={car.name}
                     />
                     <div className="card-body text-center p-0 ">
-                      <h5 className="card-title fs-3">
-                        {car.price}
-                      </h5>
+                      <h5 className="card-title fs-3">{car.price}</h5>
                     </div>
                     <div className="card-body">
                       <h5 className="card-title fs-6">

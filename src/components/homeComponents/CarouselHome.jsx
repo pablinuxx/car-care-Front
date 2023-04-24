@@ -1,13 +1,13 @@
 import Carousel from "react-bootstrap/Carousel";
 import "./servicesAndDate.css";
 
-function CarouselFadeExample() {
+function CarouselHome() {
   return (
     <div>
       <Carousel fade>
-        <Carousel.Item className="img-carrousel">
+        <Carousel.Item className="d-flex align-items-center">
           <img
-            className="d-block w-100"
+            className="h-50"
             src="https://www.zastavki.com/pictures/originals/2020Auto___Volkswagen_2020_Volkswagen_Tiguan_R-Line_blue_car_at_sunset_148674_.jpg"
             alt="First slide"
           />
@@ -47,4 +47,4 @@ function CarouselFadeExample() {
   );
 }
 
-export default CarouselFadeExample;
+export default CarouselHome;
