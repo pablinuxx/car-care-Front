@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../components/allPagesComponents/Footer";
-
 import Navbar from "../components/allPagesComponents/Navbar";
+import ScheduleCalendar from "../components/servicesComponents/ScheduleCalendar";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -46,7 +46,9 @@ function Services() {
               );
             })}
           </div>
-          <div className="bg-secondary mt-5 text-center"> Agenda</div>
+          <div className=" mt-5 ">
+            <ScheduleCalendar />
+          </div>
         </div>
         <Footer />
       </>

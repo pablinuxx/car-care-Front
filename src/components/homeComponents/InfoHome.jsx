@@ -3,7 +3,7 @@ import "./infoHome.css";
 
 function InfoHome() {
   return (
-    <div className="container">
+    <div className="container mt-5">
       <div className="row">
         <div className="col ">
           <div className="d-flex flex-column align-items-center ">
