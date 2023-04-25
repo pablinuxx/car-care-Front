@@ -10,15 +10,15 @@ import { persistor, store } from "./redux/storeConfig";
 import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <ChakraProvider>
+  <ChakraProvider>
+    <React.StrictMode>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
-        </ChakraProvider>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
+        </PersistGate>
+      </Provider>
+    </React.StrictMode>
+  </ChakraProvider>
 );
