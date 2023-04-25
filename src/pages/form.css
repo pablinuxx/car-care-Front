@@ -27,16 +27,22 @@
   
 } */
 
-.background-image {
-  background-image: url("/public/img/fondo.png");
-}
-
 .formulary {
   padding: 3rem 1.5rem 3rem 1.5rem;
   background-color: #ffffff2e;
   backdrop-filter: blur(3px);
   text-align: center;
   border-radius: 10px;
+}
+
+.background-image {
+  background-image: url("/img/fondo3.png");
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(90%);
 }
 
 /* !!Ponerle Font  */
@@ -209,6 +215,10 @@
   padding: 0.5rem;
   border-bottom-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+.btn-register:hover {
+  background-color: #b7cedca1 !important;
+  color: #87403e;
 }
 
 .action-confirm-login {
