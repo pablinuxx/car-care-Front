@@ -23,7 +23,7 @@ function Navbar() {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands`,
       });
-      
+
       setBrandsList(response.data);
     };
     getBrands();
@@ -33,7 +33,7 @@ function Navbar() {
     <>
       <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="#">
+          <Link className="navbar-brand ms-4" to="#">
             <img
               src="img/CarCare1.png"
               alt="car-care-logo"
@@ -53,7 +53,7 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0 ">
+            <ul className="navbar-nav ms-0 me-4 mb-2 mb-lg-0 ">
               <li className="nav-item ">
                 <Link
                   className="nav-link active text-navbar"
@@ -77,10 +77,12 @@ function Navbar() {
                   <ul className="dropdown-menu">
                     {brandsList &&
                       brandsList.map((brand) => (
-                        <Link key={brand.id} to={`/${brand.name}` } state={brand}>
-                        <li  className="p-1">
-                          {brand.name}
-                        </li>
+                        <Link
+                          key={brand.id}
+                          to={`/${brand.name}`}
+                          state={brand}
+                        >
+                          <li className="p-1">{brand.name}</li>
                         </Link>
                       ))}
                   </ul>
@@ -101,6 +103,8 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
+            </ul>
+            <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0 ">
               <div className="d-flex align-items-center">
                 <Avatar
                   name="Dan Abrahmov"
