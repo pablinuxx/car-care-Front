@@ -9,3 +9,16 @@
 .to-services-btn {
   width: 10rem;
 }
+.img-carrousel {
+  display: flex;
+  align-items: center;
+}
+.img-carrousel img {
+  max-height: 650px;
+  min-height: 300px;
+  margin: 0 auto;
+  object-fit: cover;
+}
+.prueba {
+  height: 250px;
+}

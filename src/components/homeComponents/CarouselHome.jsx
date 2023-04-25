@@ -5,9 +5,9 @@ function CarouselHome() {
   return (
     <div>
       <Carousel fade>
-        <Carousel.Item className="d-flex align-items-center">
+        <Carousel.Item className="img-carrousel">
           <img
-            className="h-50"
+            className="d-block w-100"
             src="https://www.zastavki.com/pictures/originals/2020Auto___Volkswagen_2020_Volkswagen_Tiguan_R-Line_blue_car_at_sunset_148674_.jpg"
             alt="First slide"
           />
