@@ -34,7 +34,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
         <div className="container-fluid">
           <Link className="navbar-brand ms-4" to="#">
-            <img src="CarCare1.png" alt="car-care-logo" className="img-nav" />
+            <img src="/CarCare1.png" alt="car-care-logo" className="img-nav" />
           </Link>
 
           <button
@@ -103,7 +103,6 @@ function Navbar() {
             <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0 ">
               <div className="d-flex align-items-center">
                 <Avatar
-                  name="Dan Abrahmov"
                   src={
                     loggedUser.token
                       ? `${import.meta.env.VITE_APP_API_URL}/img/users/${

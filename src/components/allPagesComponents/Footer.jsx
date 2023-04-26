@@ -10,8 +10,8 @@ export default function Footer() {
             <div className="col-sm-6 col-md-3">
               <div className="h-100 d-flex flex-column justify-content-center align-items-left">
                 <img
-                  src="CarCare1.png"
-                  alt="logo-carcare"
+                  src="/CarCare1.png"
+                  alt="care-car-logo"
                   className="img-footer"
                 />
               </div>

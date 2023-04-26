@@ -6,6 +6,7 @@ import Services from "./pages/Services";
 import SignUpCustomer from "./pages/SignUpCustomer";
 import LoginCustomer from "./pages/LoginCustomer";
 import Brand from "./pages/Brand";
+import Vehicle from "./pages/Vehicle";
 import AdminPanel from "./pages/AdminPanel";
 import Contact from "./pages/Contact";
 
@@ -14,6 +15,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />;
+        <Route path="/vehicle/:id" element={<Vehicle />} />;
         <Route path="/services" element={<Services />} />;
         <Route path="/contact" element={<Contact />} />;
         <Route path="/create/admin" element={<CreateAdmin />} />;
