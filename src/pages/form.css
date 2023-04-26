@@ -207,7 +207,7 @@
 }
 .btn-register:hover {
   background-color: #b7cedca1 !important;
-  color: #87403e;
+  color: #87403e !important;
 }
 
 .action-confirm-login {
