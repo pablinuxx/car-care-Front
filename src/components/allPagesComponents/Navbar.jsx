@@ -103,7 +103,6 @@ function Navbar() {
             <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0 ">
               <div className="d-flex align-items-center">
                 <Avatar
-                  name="Dan Abrahmov"
                   src={
                     loggedUser.token
                       ? `${import.meta.env.VITE_APP_API_URL}/img/users/${

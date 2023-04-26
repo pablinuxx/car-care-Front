@@ -7,7 +7,6 @@ function AdminPanel() {
   return (
     <>
       <NavbarAdmin />
-      <div>Esta es la home de admin</div>
       <SidebarAdmin />
     </>
   );

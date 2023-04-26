@@ -7,16 +7,47 @@
 /* Navbar admin  */
 
 .navbar-admin {
-  background-color: #33414c;
+  background: linear-gradient(135deg, #87403e 70%, #33414c 30%);
+  position: sticky !important;
+  top: 0px;
+  z-index: 100;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .navbar-text {
   color: #b7cedc !important;
 }
 
-
 /* Sidebar admin */
 
-.nav-item {
-    
+.sidebar {
+  width: 9.8rem !important;
+  border-right: 1px solid #33414c;
+  background-color: #87403e;
+  height: 90.4vh;
+}
+
+@media (max-width: 576px) {
+  .nav-link-text {
+    display: none;
+  }
+
+  .icon-sidebar {
+    display: grid;
+    place-items: center;
+  }
+}
+
+.nav-link-text,
+.icon-sidebar {
+  color: #b7cedc;
+}
+
+.nav-item-sidebar:hover {
+  background-color: #33414c;
+}
+
+.divided {
+    border: 1px solid #33414c;
 }
