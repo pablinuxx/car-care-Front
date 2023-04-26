@@ -34,7 +34,7 @@ function Navbar() {
       <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
         <div className="container-fluid">
           <Link className="navbar-brand ms-4" to="#">
-            <img src="CarCare1.png" alt="car-care-logo" className="img-nav" />
+            <img src="/CarCare1.png" alt="car-care-logo" className="img-nav" />
           </Link>
 
           <button

@@ -6,12 +6,14 @@ import Services from "./pages/Services";
 import SignUpCustomer from "./pages/SignUpCustomer";
 import LoginCustomer from "./pages/LoginCustomer";
 import Brand from "./pages/Brand";
+import Vehicle from "./pages/Vehicle";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />} />;
+        <Route path="/vehicle/:id" element={<Vehicle />} />;
         <Route path="/services" element={<Services />} />;
         <Route path="/create/admin" element={<CreateAdmin />} />;
         <Route path="/signup" element={<SignUpCustomer />} />;
