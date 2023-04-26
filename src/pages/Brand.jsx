@@ -5,14 +5,6 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 const Brand = () => {
-  // const separadorMiles=(price)=>{
-  //   let partesNumero = price.toString().split('.');
-
-  //   partesNumero[0] = partesNumero[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-  //   return partesNumero.join('.');
-  // }
-
   const location = useLocation();
   const [carsList, setCarsList] = useState([]);
   useEffect(() => {

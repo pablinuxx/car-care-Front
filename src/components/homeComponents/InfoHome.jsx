@@ -11,10 +11,10 @@ function InfoHome() {
               <i className="bi bi-calendar-check-fill icon-info fs-1"></i>
             </div>
             <div className="text-center">
-              <h4 className="mt-2">Title</h4>
+              <h4 className="mt-2">Flexible Schedule</h4>
               <p className=" mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias, ducimus? Lorem ipsum dolor sit amet.
+                With our customizable service agenda, we offer flexible and
+                scalable solutions to adapt to any need of our clients.
               </p>
             </div>
           </div>
@@ -25,10 +25,11 @@ function InfoHome() {
               <i className="bi bi-car-front-fill icon-info fs-1"></i>
             </div>
             <div className="text-center">
-              <h4 className="mt-2">Title</h4>
+              <h4 className="mt-2">In exchanges </h4>
               <p className=" mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias, ducimus? Lorem ipsum dolor sit amet.
+                Make your dream car a reality with our hassle-free exchange
+                program. We offer fair appraisals and a wide selection of
+                quality vehicles to choose from.
               </p>
             </div>
           </div>
@@ -36,13 +37,14 @@ function InfoHome() {
         <div className="col ">
           <div className="d-flex flex-column align-items-center ">
             <div className="info-home">
-              <i className="bi bi-currency-dollar icon-info fs-1"></i>
+              <i className="bi bi-card-checklist icon-info fs-1"></i>
             </div>
             <div className="text-center">
-              <h4 className="mt-2">Title</h4>
+              <h4 className="mt-2">Consultancy</h4>
               <p className=" mt-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Molestias, ducimus? Lorem ipsum dolor sit amet.
+                Our consultancy services offer personalized and efficient
+                support for all kinds of administrative procedures and
+                formalities.
               </p>
             </div>
           </div>

@@ -14,18 +14,8 @@
   background-image: url("/img/login-customer.webp");
   background-position: center;
   background-size: cover;
-  /* color: #fff; */
   color: #b7cedc;
 }
-
-/* .container-login-form {
-  background-image: url("/public/img/fondo.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100vh;
-  
-} */
 
 .formulary {
   padding: 3rem 1.5rem 3rem 1.5rem;
@@ -158,7 +148,6 @@
 
 .header-logo {
   display: flex;
-  /* border: 1px solid red; */
   justify-content: space-between;
 }
 
@@ -218,7 +207,7 @@
 }
 .btn-register:hover {
   background-color: #b7cedca1 !important;
-  color: #87403e;
+  color: #87403e !important;
 }
 
 .action-confirm-login {

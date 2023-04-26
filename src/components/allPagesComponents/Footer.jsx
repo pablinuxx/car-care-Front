@@ -3,13 +3,17 @@ import "./footer.css";
 
 export default function Footer() {
   return (
-    <div className="footer">
+    <div className="footer ">
       <div className="row footer-container mx-auto">
         <div className="col-8">
           <div className="row">
             <div className="col-sm-6 col-md-3">
               <div className="h-100 d-flex flex-column justify-content-center align-items-left">
-                <img src="/CarCare1.png" alt="" className="img-footer" />
+                <img
+                  src="/CarCare1.png"
+                  alt="care-car-logo"
+                  className="img-footer"
+                />
               </div>
             </div>
             <div className="col-3">
