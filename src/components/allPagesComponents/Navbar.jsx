@@ -95,7 +95,7 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item ">
-                <Link className="nav-link text-navbar" to="#">
+                <Link className="nav-link text-navbar" to="/contact">
                   Contact
                 </Link>
               </li>
