@@ -9,3 +9,77 @@
 .information-box {
   background-color: #33414c;
 }
+
+.information-box {
+  background-color: #33414c;
+  -webkit-transition: background-color 1s linear;
+  transition: background-color 0.8s linear;
+}
+.information-box:hover {
+  background-color: #87403e;
+}
+
+/* Shine */
+
+figure {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  overflow: hidden;
+}
+figure:hover + span {
+  bottom: -36px;
+  opacity: 1;
+}
+
+.car-shine figure {
+  position: relative;
+}
+
+.car-shine figure::before {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  z-index: 2;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+  background: -webkit-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  -webkit-transform: skewX(-25deg);
+  transform: skewX(-25deg);
+}
+.car-shine figure:hover::before {
+  -webkit-animation: shine 5s;
+  animation: shine 2s;
+}
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+.car-shine figure img {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: 2s ease-in-out;
+  transition: 2s ease-in-out;
+}
+.car-shine figure:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
