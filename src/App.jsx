@@ -7,6 +7,7 @@ import SignUpCustomer from "./pages/SignUpCustomer";
 import LoginCustomer from "./pages/LoginCustomer";
 import Brand from "./pages/Brand";
 import AdminPanel from "./pages/AdminPanel";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />;
         <Route path="/services" element={<Services />} />;
+        <Route path="/contact" element={<Contact />} />;
         <Route path="/create/admin" element={<CreateAdmin />} />;
         <Route path="/signup" element={<SignUpCustomer />} />;
         <Route path="/login" element={<LoginCustomer />} />;
