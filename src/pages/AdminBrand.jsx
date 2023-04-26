@@ -1,15 +1,14 @@
 import React from "react";
 import NavbarAdmin from "../components/adminPanel/NavbarAdmin";
-import "../components/adminPanel/admin.css";
 import SidebarAdmin from "../components/adminPanel/SidebarAdmin";
 
-function AdminPanel() {
+function AdminBrand() {
   return (
     <>
       <NavbarAdmin />
-     <SidebarAdmin />
+      <SidebarAdmin />
     </>
   );
 }
 
-export default AdminPanel;
+export default AdminBrand;
