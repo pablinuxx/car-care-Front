@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar admin  */
+
+.navbar-admin {
+  background-color: #33414c;
+}
+
+.navbar-text {
+  color: #b7cedc !important;
+}
+
+
+/* Sidebar admin */
+
+.nav-item {
+    
+}
