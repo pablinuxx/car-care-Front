@@ -1,3 +1,5 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Mukta+Mahee&display=swap");
 :root {
   --brand-light-gray: #b7cedc;
   --brand-gray-blue-dark: #33414c;
@@ -5,4 +7,12 @@
   --brand-red-brown: #87403e;
   --light-gray-background: rgba(48, 48, 48, 0.024);
   --dark-gray-background: rgba(48, 48, 48, 0.085);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: "Shippori Antique B1", sans-serif; */
+  font-family: "Mukta Mahee", sans-serif !important;
 }

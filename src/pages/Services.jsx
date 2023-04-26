@@ -2,8 +2,8 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../components/allPagesComponents/Footer";
 import Navbar from "../components/allPagesComponents/Navbar";
-import ScheduleCalendar from "../components/servicesComponents/ScheduleCalendar";
-
+import { InlineWidget } from "react-calendly";
+import "./services.css";
 function Services() {
   const [services, setServices] = useState([]);
 
@@ -23,8 +23,10 @@ function Services() {
     services && (
       <>
         <Navbar />
-        <div className="bg-secondary mt-4 text-center"> HERO</div>
-        <div className="container mt-5">
+        <div className="mt-4 text-center hero-service">
+          <h2>SERVICES</h2>
+        </div>
+        <div className="container mt-5 mb-5">
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {services.map((service) => {
               return (
@@ -46,8 +48,19 @@ function Services() {
               );
             })}
           </div>
-          <div className=" mt-5 ">
-            <ScheduleCalendar />
+          <div className="mt-5 text-center">
+            <InlineWidget
+              url="https://calendly.com/carcare-proyectate"
+              pageSettings={{
+                backgroundColor: "#ffffff",
+                hideEventTypeDetails: true,
+                hideLandingPageDetails: false,
+                primaryColor: "#33414c",
+                textColor: "#33414c",
+                showFrame: false,
+                height: "100%",
+              }}
+            />
           </div>
         </div>
         <Footer />
