@@ -57,7 +57,7 @@ function SignUpCustomer() {
                   </p>
                 </div>
                 <div className="logo">
-                  <img className="logo-sign-up" src="/img/CarCare1.png" />
+                  <img className="logo-sign-up" src="CarCare1.png" />
                 </div>
               </div>
               <form

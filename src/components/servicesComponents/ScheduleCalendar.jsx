@@ -17,7 +17,9 @@ function ScheduleCalendar() {
           </select>
         </div>
 
-        <div className="p-2 "></div>
+        <div className="p-2 ">
+          <Icon as={CheckIcon} />
+        </div>
       </div>
     </>
   );
