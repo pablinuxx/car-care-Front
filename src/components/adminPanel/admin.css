@@ -49,5 +49,47 @@
 }
 
 .divided {
-    border: 1px solid #33414c;
+  border: 1px solid #33414c;
+}
+
+/* Services page  */
+
+.icon-delete-panel-admin:hover {
+  color: red;
+}
+
+.icon-modify-panel-admin:hover {
+  color: green;
+}
+
+.table-service-title {
+  color: #87403e !important;
+}
+
+.btn-add-tables {
+  background-color: #87403e !important;
+  border-color: #87403e !important;
+  color: #b7cedc !important;
+}
+
+.btn-add-tables:hover {
+  transition: 0.7s ease;
+  background-color: transparent !important;
+  color: #33414c !important;
+}
+
+.btn-open-modal-delete {
+  background-color: transparent !important;
+}
+
+/* Modal delete service  */
+
+.confirm-delete:hover{
+  background-color: #87403ed5 !important;
+  color: #fff;
+}
+
+.confirm-delete {
+  background-color: #87403ead !important;
+  border: #87403e !important;
 }

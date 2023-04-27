@@ -8,10 +8,22 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
 import { persistor, store } from "./redux/storeConfig";
 import { PersistGate } from "redux-persist/integration/react";
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  colors: {
+    tables: {
+      100: "#87403e",
+      200: "#33414c",
+      300: "#75c9ef",
+      400: "#b7cedc",
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <BrowserRouter>
