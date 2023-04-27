@@ -33,9 +33,15 @@ function Services() {
                 <div key={service.id} className="col ">
                   <div className="card h-100">
                     <img
-                      src={`${import.meta.env.VITE_APP_API_URL}/img/services/${
-                        service.image
-                      }`}
+                      src={
+                        typeof service.image === "object"
+                          ? `${import.meta.env.VITE_APP_API_URL}/${
+                              service.image[0]
+                            }`
+                          : `${import.meta.env.VITE_APP_API_URL}/img/services/${
+                              service.image
+                            }`
+                      }
                       className="card-img-top"
                       alt="service"
                     />

@@ -77,3 +77,19 @@
   background-color: transparent !important;
   color: #33414c !important;
 }
+
+.btn-open-modal-delete {
+  background-color: transparent !important;
+}
+
+/* Modal delete service  */
+
+.confirm-delete:hover{
+  background-color: #87403ed5 !important;
+  color: #fff;
+}
+
+.confirm-delete {
+  background-color: #87403ead !important;
+  border: #87403e !important;
+}

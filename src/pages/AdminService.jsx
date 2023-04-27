@@ -10,12 +10,24 @@ import {
   Td,
   TableContainer,
 } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 function AdminService() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [services, setServices] = useState([]);
+  const [serviceToDelete, setServiceToDelete] = useState(null);
 
   useEffect(() => {
     const getServices = async () => {
@@ -27,6 +39,22 @@ function AdminService() {
     };
     getServices();
   }, []);
+
+  const handleDeleteService = async (id) => {
+    try {
+      setServices(services.filter((item) => item.id !== id));
+      const response = await axios({
+        // headers: {
+        //   Authorization: `bearer: ${token} `,
+        // },
+        method: "delete",
+        url: `${import.meta.env.VITE_APP_API_URL}/services/${id}`,
+      });
+      // setServiceToDelete(id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     services && (
@@ -62,7 +90,33 @@ function AdminService() {
                           <Td>{service.name}</Td>
                           <Td>
                             <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
-                            <i className="bi bi-trash3 mx-2 icon-delete-panel-admin"></i>
+                            <Button
+                              onClick={onOpen}
+                              className="btn-open-modal-delete"
+                            >
+                              <i className="bi bi-trash3 mx-2 icon-delete-panel-admin"></i>
+                            </Button>
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                              <ModalOverlay />
+                              <ModalContent>
+                                <ModalHeader>Delete service</ModalHeader>
+                                <ModalCloseButton />
+                                <ModalBody>
+                                  Are you sure you want to delete this service?
+                                </ModalBody>
+
+                                <ModalFooter>
+                                  <Button
+                                    className="confirm-delete"
+                                    onClick={() =>
+                                      handleDeleteService(serviceToDelete)
+                                    }
+                                  >
+                                    Delete
+                                  </Button>
+                                </ModalFooter>
+                              </ModalContent>
+                            </Modal>
                           </Td>
                         </Tr>
                       </>
