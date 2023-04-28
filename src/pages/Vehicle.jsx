@@ -40,7 +40,7 @@ function Vehicle() {
           </div>
         </div>
         <div className="row ">
-          <div className="col-6  g-0">
+          <div className="col-6 brighten g-0">
             <figure className="p-0 m-0 ">
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}/${
