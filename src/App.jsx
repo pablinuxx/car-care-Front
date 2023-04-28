@@ -1,26 +1,28 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import CreateAdmin from "./pages/CreateAdmin";
+import CreateAdmin from "./pages/adminPanelPage/CreateAdmin";
 import Services from "./pages/Services";
 import SignUpCustomer from "./pages/SignUpCustomer";
 import LoginCustomer from "./pages/LoginCustomer";
 import Brand from "./pages/Brand";
 import Vehicle from "./pages/Vehicle";
-import AdminPanel from "./pages/AdminPanel";
+import AdminPanel from "./pages/adminPanelPage/AdminPanel";
 import Contact from "./pages/Contact";
-import AdminBrand from "./pages/AdminBrand";
-import AdminCustomers from "./pages/AdminCustomers";
-import AdminList from "./pages/AdminList";
-import AdminService from "./pages/AdminService";
-import AdminTypes from "./pages/AdminTypes";
-import AdminVehicles from "./pages/AdminVehicles";
-import AddService from "./pages/AddService";
+import AdminBrand from "./pages/adminPanelPage/AdminBrand";
+import AdminCustomers from "./pages/adminPanelPage/AdminCustomers";
+import AdminList from "./pages/adminPanelPage/AdminList";
+import AdminService from "./pages/adminPanelPage/AdminService";
+import AdminTypes from "./pages/adminPanelPage/AdminTypes";
+import AdminVehicles from "./pages/adminPanelPage/AdminVehicles";
+import AddService from "./pages/adminPanelPage/AddService";
+import EditService from "./pages/adminPanelPage/EditService";
 
 function App() {
   return (
     <>
       <Routes>
+        {/* Public page  */}
         <Route path="/" element={<Home />} />;
         <Route path="/vehicle/:id" element={<Vehicle />} />;
         <Route path="/services" element={<Services />} />;
@@ -37,7 +39,9 @@ function App() {
         <Route path="/admin/services" element={<AdminService />} />
         <Route path="/admin/types" element={<AdminTypes />} />
         <Route path="/admin/vehicles" element={<AdminVehicles />} />
-        <Route path="/create/service" element={<AddService />} />
+        <Route path="admin/add/services" element={<AddService />} />
+        <Route path="admin/edit/services/:id" element={<EditService />} />
+        {/* Page not found */}
         <Route path="*" element={<p>Error 404 page not found!</p>} />
       </Routes>
     </>

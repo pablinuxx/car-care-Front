@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import NavbarAdmin from "../components/adminPanel/NavbarAdmin";
-import SidebarAdmin from "../components/adminPanel/SidebarAdmin";
+import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
+import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import {
   Table,
   Thead,
@@ -21,10 +21,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 function AdminService() {
+  const { id } = useParams();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [services, setServices] = useState([]);
   const [serviceToDelete, setServiceToDelete] = useState(null);
@@ -42,7 +44,7 @@ function AdminService() {
 
   const handleDeleteService = async (id) => {
     try {
-      setServices(services.filter((item) => item.id !== id));
+      // setServices(services.filter((item) => item.id !== id));
       const response = await axios({
         // headers: {
         //   Authorization: `bearer: ${token} `,
@@ -50,7 +52,8 @@ function AdminService() {
         method: "delete",
         url: `${import.meta.env.VITE_APP_API_URL}/services/${id}`,
       });
-      // setServiceToDelete(id);
+      console.log(serviceToDelete);
+      setServiceToDelete(id);
     } catch (err) {
       console.log(err);
     }
@@ -65,7 +68,7 @@ function AdminService() {
           <section className="container p-4">
             <div className="d-flex justify-content-between">
               <h2>Services</h2>
-              <Link to="/create/service">
+              <Link to="/admin/add/services">
                 <Button className="btn-add-tables" variant="outline">
                   <i className="bi bi-plus-circle me-3"></i> Add services
                 </Button>
@@ -89,7 +92,9 @@ function AdminService() {
                           <Td>{service.id}</Td>
                           <Td>{service.name}</Td>
                           <Td>
-                            <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
+                            <Link to={`/admin/edit/services/${service.id}`}>
+                              <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
+                            </Link>
                             <Button
                               onClick={onOpen}
                               className="btn-open-modal-delete"

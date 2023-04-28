@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import NavbarAdmin from "../components/adminPanel/NavbarAdmin";
-import SidebarAdmin from "../components/adminPanel/SidebarAdmin";
+import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
+import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";

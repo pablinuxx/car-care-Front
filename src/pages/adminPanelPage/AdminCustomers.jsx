@@ -1,6 +1,6 @@
 import React from "react";
-import NavbarAdmin from "../components/adminPanel/NavbarAdmin";
-import SidebarAdmin from "../components/adminPanel/SidebarAdmin";
+import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
+import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 
 function AdminCustomers() {
   return (
