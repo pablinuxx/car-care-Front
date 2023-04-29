@@ -3,10 +3,12 @@ import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router";
+import { useSelector } from "react-redux";
 
 function EditService() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.session);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -21,7 +23,7 @@ function EditService() {
       formData.append("description", description);
       formData.append("image", image);
 
-      const response = await axios({
+      await axios({
         headers: {
           "Content-Type": "multipart/form-data",
           // Authorization: `bearer: ${user.token}`,
@@ -58,7 +60,7 @@ function EditService() {
                   className="form-input text-dark"
                   placeholder=" "
                 />
-                <label htmlFor="name" className="form-label">
+                <label htmlFor="name" className="form-label-admin">
                   Name
                 </label>
               </div>
@@ -72,7 +74,7 @@ function EditService() {
                   className="form-input text-dark"
                   placeholder=" "
                 />
-                <label htmlFor="description" className="form-label">
+                <label htmlFor="description" className="form-label-admin">
                   Description
                 </label>
               </div>
@@ -87,7 +89,7 @@ function EditService() {
               </div>
             </div>
             <div className="action-confirm-login mt-4 mb-5">
-              <button className="btn-register text-white ">Confirm</button>
+              <button className="btn-modify">Confirm</button>
             </div>
           </form>
         </div>

@@ -17,6 +17,8 @@ import AdminTypes from "./pages/adminPanelPage/AdminTypes";
 import AdminVehicles from "./pages/adminPanelPage/AdminVehicles";
 import AddService from "./pages/adminPanelPage/AddService";
 import EditService from "./pages/adminPanelPage/EditService";
+import AddCustomer from "./pages/adminPanelPage/AddCustomer";
+import EditCustomer from "./pages/adminPanelPage/EditCustomer";
 
 function App() {
   return (
@@ -41,6 +43,8 @@ function App() {
         <Route path="/admin/vehicles" element={<AdminVehicles />} />
         <Route path="admin/add/services" element={<AddService />} />
         <Route path="admin/edit/services/:id" element={<EditService />} />
+        <Route path="/admin/add/customers" element={<AddCustomer />} />
+        <Route path="/admin/edit/customers/:id" element={<EditCustomer />} />
         {/* Page not found */}
         <Route path="*" element={<p>Error 404 page not found!</p>} />
       </Routes>

@@ -6,6 +6,12 @@ function SidebarAdmin() {
     <nav className="sidebar col-sm-3">
       <ul className="nav flex-column">
         <li className="nav-item-sidebar">
+          <Link to="/admin" className="nav-link">
+            <i className="bi bi-speedometer2 icon-sidebar mx-2"></i>
+            <span className="nav-link-text">Dashboard</span>
+          </Link>
+        </li>
+        <li className="nav-item-sidebar">
           <Link to="/admin/services" className="nav-link">
             <i className="bi bi-card-list icon-sidebar mx-2"></i>
             <span className="nav-link-text">Services</span>

@@ -113,9 +113,7 @@ function AdminService() {
                                 <ModalFooter>
                                   <Button
                                     className="confirm-delete"
-                                    onClick={() =>
-                                      handleDeleteService(serviceToDelete)
-                                    }
+                                    onClick={() => handleDeleteService(id)}
                                   >
                                     Delete
                                   </Button>
