@@ -31,7 +31,6 @@ function AddCustomer() {
       url: `${import.meta.env.VITE_APP_API_URL}/customers`,
       data: formData,
     });
-
     navigate("/admin/customers");
   };
 
@@ -59,7 +58,7 @@ function AddCustomer() {
                   required
                 />
                 <label htmlFor="firstname" className="form-label-admin">
-                  firstname
+                  Firstname
                 </label>
               </div>
               <div className="form-group">

@@ -1,57 +1,34 @@
-import axios from "axios";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
-import { ToastContainer, toast } from "react-toastify";
+import axios from "axios";
 import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
-import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router";
 
-function EditCustomer() {
-  const { id } = useParams();
-  const token = useSelector((state) => state.session.token);
-
-  const navigate = useNavigate();
-
-  const notify = () =>
-    toast.success("Successfully updated!", {
-      position: "bottom-center",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
+function AddAdmin() {
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState(null);
 
-  const handleEditCustomer = async (e) => {
-    try {
-      e.preventDefault();
+  const navigate = useNavigate();
 
-      const response = await axios({
-        headers: {
-          Authorization: `bearer: ${token}`,
-        },
-        method: "patch",
-        url: `${import.meta.env.VITE_APP_API_URL}/customers/${id}`,
-        data: {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-        },
-      });
-      if (response.data) {
-        notify();
-        navigate("/admin/customers");
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  const handleUserCreation = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("firstname", firstname);
+    formData.append("lastname", lastname);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("avatar", avatar);
+
+    const response = await axios({
+      method: "post",
+      url: `${import.meta.env.VITE_APP_API_URL}/admins`,
+      data: formData,
+    });
+    navigate("/admin/list");
   };
 
   return (
@@ -62,9 +39,9 @@ function EditCustomer() {
         <div className="container mt-3 d-flex">
           <form
             className="form-sign-up w-75 mx-auto"
-            onSubmit={(e) => handleEditCustomer(e)}
+            onSubmit={(e) => handleUserCreation(e)}
           >
-            <h2 className="text-center p-3">Modify a customer</h2>
+            <h2 className="text-center p-3">Create new administrator</h2>
             <div className="form-container w-75 m-auto">
               <div className="form-group">
                 <input
@@ -75,6 +52,7 @@ function EditCustomer() {
                   onChange={(e) => setFirstname(e.target.value)}
                   className="form-input text-dark"
                   placeholder=" "
+                  required
                 />
                 <label htmlFor="firstname" className="form-label-admin">
                   Firstname
@@ -82,6 +60,7 @@ function EditCustomer() {
               </div>
               <div className="form-group">
                 <input
+                  required
                   type="text"
                   id="lastname"
                   name="lastname"
@@ -96,24 +75,49 @@ function EditCustomer() {
               </div>
               <div className="form-group">
                 <input
+                  required
                   type="email"
                   id="email"
                   name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder=" "
                   className="form-input text-dark"
+                  placeholder=" "
                 />
                 <label htmlFor="email" className="form-label-admin">
                   Email
                 </label>
               </div>
+
+              <div className="form-group">
+                <input
+                  required
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="form-input text-dark"
+                  placeholder=" "
+                />
+                <label htmlFor="password" className="form-label-admin">
+                  Password
+                </label>
+              </div>
+
+              <div className="form-group">
+                <input
+                  required
+                  type="file"
+                  id="avatar"
+                  name="avatar"
+                  onChange={(e) => setAvatar(e.target.files[0])}
+                />
+                <label htmlFor="avatar"></label>
+              </div>
             </div>
             <div className="action-confirm-login mt-4 mb-5">
-              <button className="btn-modify" onClick={notify}>
-                Confirm
-              </button>
-              <ToastContainer />
+              <button className="btn-modify">Create</button>
             </div>
           </form>
         </div>
@@ -122,4 +126,4 @@ function EditCustomer() {
   );
 }
 
-export default EditCustomer;
+export default AddAdmin;

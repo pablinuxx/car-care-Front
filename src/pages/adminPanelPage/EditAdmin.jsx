@@ -1,57 +1,35 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router";
+import { Navigate, useNavigate, useParams } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import axios from "axios";
 
-function EditCustomer() {
+function EditAdmin() {
   const { id } = useParams();
-  const token = useSelector((state) => state.session.token);
-
   const navigate = useNavigate();
-
-  const notify = () =>
-    toast.success("Successfully updated!", {
-      position: "bottom-center",
-      autoClose: 4000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
+  const token = useSelector((state) => state.session.token);
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleEditCustomer = async (e) => {
-    try {
-      e.preventDefault();
-
-      const response = await axios({
-        headers: {
-          Authorization: `bearer: ${token}`,
-        },
-        method: "patch",
-        url: `${import.meta.env.VITE_APP_API_URL}/customers/${id}`,
-        data: {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-        },
-      });
-      if (response.data) {
-        notify();
-        navigate("/admin/customers");
-      }
-    } catch (err) {
-      console.log(err);
-    }
+  const handleEditAdmin = async (e) => {
+    e.preventDefault();
+    await axios({
+      //   headers: { Authorization: `bearer: ${token}` },
+      method: "patch",
+      url: `${import.meta.env.VITE_APP_API_URL}/admins/${id}`,
+      data: {
+        firstname,
+        lastname,
+        email,
+      },
+    });
+    navigate("/admin/list");
   };
 
   return (
@@ -62,9 +40,9 @@ function EditCustomer() {
         <div className="container mt-3 d-flex">
           <form
             className="form-sign-up w-75 mx-auto"
-            onSubmit={(e) => handleEditCustomer(e)}
+            onSubmit={(e) => handleEditAdmin(e)}
           >
-            <h2 className="text-center p-3">Modify a customer</h2>
+            <h2 className="text-center p-3">Modify admin</h2>
             <div className="form-container w-75 m-auto">
               <div className="form-group">
                 <input
@@ -110,9 +88,7 @@ function EditCustomer() {
               </div>
             </div>
             <div className="action-confirm-login mt-4 mb-5">
-              <button className="btn-modify" onClick={notify}>
-                Confirm
-              </button>
+              <button className="btn-modify">Confirm</button>
               <ToastContainer />
             </div>
           </form>
@@ -122,4 +98,4 @@ function EditCustomer() {
   );
 }
 
-export default EditCustomer;
+export default EditAdmin;

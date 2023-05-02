@@ -104,7 +104,7 @@ function AdminService() {
                               <ModalOverlay />
                               <ModalContent>
                                 <ModalHeader>
-                                  Delete service {deleteSerivceId}
+                                  Delete service ID: {deleteSerivceId}
                                 </ModalHeader>
                                 <ModalCloseButton />
                                 <ModalBody>

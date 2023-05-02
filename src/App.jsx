@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import CreateAdmin from "./pages/adminPanelPage/CreateAdmin";
+import CreateAdmin from "./pages/adminPanelPage/AddAdmin";
 import Services from "./pages/Services";
 import SignUpCustomer from "./pages/SignUpCustomer";
 import LoginCustomer from "./pages/LoginCustomer";
@@ -19,6 +19,10 @@ import AddService from "./pages/adminPanelPage/AddService";
 import EditService from "./pages/adminPanelPage/EditService";
 import AddCustomer from "./pages/adminPanelPage/AddCustomer";
 import EditCustomer from "./pages/adminPanelPage/EditCustomer";
+import EditAdmin from "./pages/adminPanelPage/EditAdmin";
+import AddAdmin from "./pages/adminPanelPage/AddAdmin";
+import AddVehicle from "./pages/adminPanelPage/AddVehicle";
+import EditVehicle from "./pages/adminPanelPage/EditVehicle";
 
 function App() {
   return (
@@ -45,6 +49,10 @@ function App() {
         <Route path="admin/edit/services/:id" element={<EditService />} />
         <Route path="/admin/add/customers" element={<AddCustomer />} />
         <Route path="/admin/edit/customers/:id" element={<EditCustomer />} />
+        <Route path="/admin/edit/admin/:id" element={<EditAdmin />} />
+        <Route path="/admin/add/admin" element={<AddAdmin />} />
+        <Route path="/admin/add/vehicles" element={<AddVehicle />} />
+        <Route path="/admin/edit/vehicles" element={<EditVehicle />} />
         {/* Page not found */}
         <Route path="*" element={<p>Error 404 page not found!</p>} />
       </Routes>

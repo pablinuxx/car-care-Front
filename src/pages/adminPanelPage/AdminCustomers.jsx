@@ -50,9 +50,9 @@ function AdminCustomers() {
   useEffect(() => {
     const getCustomers = async () => {
       const response = await axios({
-        headers: {
-          Authorization: `bearer: ${token}`,
-        },
+        // headers: {
+        //   Authorization: `bearer: ${token}`,
+        // },
         method: "get",
         url: `${import.meta.env.VITE_APP_API_URL}/customers`,
       });
@@ -149,7 +149,7 @@ function AdminCustomers() {
                               <ModalOverlay />
                               <ModalContent>
                                 <ModalHeader>
-                                  Delete customer {deleteCustomerId}
+                                  Delete customer ID: {deleteCustomerId}
                                 </ModalHeader>
                                 <ModalCloseButton />
                                 <ModalBody>

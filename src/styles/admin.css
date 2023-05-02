@@ -22,6 +22,9 @@
 /* Sidebar admin */
 
 .sidebar {
+  position: sticky !important;
+  top: 3.89rem;
+  z-index: 100 !important;
   width: 9.8rem !important;
   border-right: 1px solid #33414c;
   background-color: #87403e;
@@ -92,4 +95,10 @@
 .confirm-delete {
   background-color: #87403ead !important;
   border: #87403e !important;
+}
+
+/* Add Vehicle Form  */
+
+.create-vehicle-select {
+  color: #33414c !important;
 }

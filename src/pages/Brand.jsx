@@ -121,14 +121,20 @@ const Brand = () => {
                 carsList.vehicles.map((car) => (
                   <div className=" col-4 card  m-2 border-0" key={car.id}>
                     <img
-                      src={`${import.meta.env.VITE_APP_API_URL}/${
-                        car.image[0]
-                      }`}
+                      src={
+                        typeof car.image === "object"
+                          ? `${import.meta.env.VITE_APP_API_URL}/${
+                              car.image[0]
+                            }`
+                          : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
+                              car.image
+                            }`
+                      }
                       className="img-fluid rounded"
                       alt={car.name}
                     />
                     <div className="card-body text-center p-0 ">
-                      <h5 className="card-title fs-3">{car.price}</h5>
+                      <h5 className="card-title fs-3">USD {car.price}</h5>
                     </div>
                     <div className="card-body">
                       <h5 className="card-title fs-6">
