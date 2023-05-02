@@ -1,5 +1,5 @@
 import React from "react";
-import "./brands.css";
+import "../../styles/brands.css";
 
 function BrandsHome() {
   return (

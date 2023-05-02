@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./contact.css";
-import "./form.css";
+import "../styles/contact.css";
+import "../styles/form.css";
 import { Link } from "react-router-dom";
 import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";

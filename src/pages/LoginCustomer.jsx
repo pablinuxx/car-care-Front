@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./form.css";
+import "../styles/form.css";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -43,7 +43,7 @@ function LoginCustomer() {
         return userNotFound();
       } else {
         dispatch(setLoggedUser(response.data));
-        notify()
+        notify();
         navigate("/");
       }
     } catch (error) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./navbar.css";
+import "../../styles/navbar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";

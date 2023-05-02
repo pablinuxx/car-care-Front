@@ -4,7 +4,7 @@ import Footer from "../components/allPagesComponents/Footer";
 
 // import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "./vehicle.css";
+import "../styles/vehicle.css";
 
 function Vehicle() {
   //   const location = useLocation();
