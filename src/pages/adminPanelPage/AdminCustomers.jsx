@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Avatar } from "@chakra-ui/react";
 import {
@@ -14,22 +14,24 @@ import {
   Td,
   TableContainer,
 } from "@chakra-ui/react";
-// import {
-//   Modal,
-//   ModalOverlay,
-//   ModalContent,
-//   ModalHeader,
-//   ModalFooter,
-//   ModalBody,
-//   ModalCloseButton,
-// } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import { ToastContainer } from "react-toastify";
 
 function AdminCustomers() {
-  const user = useSelector((state) => state.session);
-  const { id } = useParams();
+  const token = useSelector((state) => state.session.token);
   const [customers, setCustomers] = useState([]);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const notify = () =>
     toast.success("Successfully deleted!", {
@@ -46,9 +48,9 @@ function AdminCustomers() {
   useEffect(() => {
     const getCustomers = async () => {
       const response = await axios({
-        // headers: {
-        //   Authorization: `bearer: ${token}`,
-        // },
+        headers: {
+          Authorization: `bearer: ${token}`,
+        },
         method: "get",
         url: `${import.meta.env.VITE_APP_API_URL}/customers`,
       });
@@ -61,9 +63,9 @@ function AdminCustomers() {
     try {
       setCustomers(customers.filter((customer) => customer.id !== id));
       await axios({
-        // headers: {
-        //   Authorization: `bearer: ${user.token}`,
-        // },
+        headers: {
+          Authorization: `bearer: ${token}`,
+        },
         method: "delete",
         url: `${import.meta.env.VITE_APP_API_URL}/customers/${id}`,
       });
@@ -130,11 +132,33 @@ function AdminCustomers() {
                             <Button className="btn-open-modal-delete">
                               <i
                                 className="bi bi-trash3 mx-2 icon-delete-panel-admin"
-                                onClick={() =>
-                                  handleDeleteCustomer(customer.id)
-                                }
+                                onClick={onOpen}
                               ></i>
                             </Button>
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                              <ModalOverlay />
+                              <ModalContent>
+                                <ModalHeader>
+                                  Delete customer {customer.firstname}{" "}
+                                  {customer.lastname}
+                                </ModalHeader>
+                                <ModalCloseButton />
+                                <ModalBody>
+                                  Are you sure you want to delete it?
+                                </ModalBody>
+
+                                <ModalFooter>
+                                  <Button
+                                  className="btn-modal-confirm-delete"
+                                    onClick={() =>
+                                      handleDeleteCustomer(customer.id)
+                                    }
+                                  >
+                                    Confirm
+                                  </Button>
+                                </ModalFooter>
+                              </ModalContent>
+                            </Modal>
                             <ToastContainer />
                           </Td>
                         </Tr>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 function AddCustomer() {
@@ -12,7 +11,6 @@ function AddCustomer() {
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
 
-  const user = useSelector((state) => state.session);
   const navigate = useNavigate();
 
   const handleAddCustomer = async (e) => {
@@ -25,9 +23,8 @@ function AddCustomer() {
     formData.append("password", password);
     formData.append("avatar", avatar);
 
-    const response = await axios({
+    await axios({
       headers: {
-        // Authorization: `bearer: ${user.token}`,
         "Content-Type": "multipart/form-data",
       },
       method: "post",

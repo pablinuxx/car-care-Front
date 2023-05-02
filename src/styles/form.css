@@ -244,3 +244,18 @@
   transform: translateY(-12px) scale(0.7);
   transform-origin: left top;
 }
+
+/* Modal admin panel  */
+
+.btn-modal-confirm-delete {
+  background-color: #87403e !important;
+  color: #fff !important;
+}
+
+.btn-modal-confirm-delete:hover {
+  background-color: #87403e8c !important;
+  border: 1px solid #87403e !important;
+  color: #28343d !important;
+}
+
+

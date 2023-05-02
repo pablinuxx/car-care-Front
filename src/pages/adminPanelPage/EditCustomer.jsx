@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function EditCustomer() {
   const { id } = useParams();
-  const user = useSelector((state) => state.session);
+  const token = useSelector((state) => state.session.token);
 
   const navigate = useNavigate();
 
@@ -34,9 +34,9 @@ function EditCustomer() {
       e.preventDefault();
 
       const response = await axios({
-        // headers: {
-        //     Authorization: `bearer: ${user.token}`
-        // },
+        headers: {
+          Authorization: `bearer: ${token}`,
+        },
         method: "patch",
         url: `${import.meta.env.VITE_APP_API_URL}/customers/${id}`,
         data: {
