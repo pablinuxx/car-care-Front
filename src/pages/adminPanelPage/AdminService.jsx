@@ -21,15 +21,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function AdminService() {
-  const { id } = useParams();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [services, setServices] = useState([]);
-  const [serviceToDelete, setServiceToDelete] = useState(null);
+  const [deleteSerivceId, setDeleteServiceId] = useState(null);
 
   useEffect(() => {
     const getServices = async () => {
@@ -44,16 +42,14 @@ function AdminService() {
 
   const handleDeleteService = async (id) => {
     try {
-      // setServices(services.filter((item) => item.id !== id));
-      const response = await axios({
+      await axios({
         // headers: {
         //   Authorization: `bearer: ${token} `,
         // },
         method: "delete",
         url: `${import.meta.env.VITE_APP_API_URL}/services/${id}`,
       });
-      console.log(serviceToDelete);
-      setServiceToDelete(id);
+      setServices(services.filter((item) => item.id !== deleteSerivceId));
     } catch (err) {
       console.log(err);
     }
@@ -88,34 +84,42 @@ function AdminService() {
                   {services.map((service) => {
                     return (
                       <>
-                        <Tr key={service.id}>
-                          <Td>{service.id}</Td>
+                        <Tr>
+                          <Td key={service.id}>{service.id}</Td>
                           <Td>{service.name}</Td>
                           <Td>
                             <Link to={`/admin/edit/services/${service.id}`}>
                               <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
                             </Link>
-                            <Button
-                              onClick={onOpen}
-                              className="btn-open-modal-delete"
-                            >
-                              <i className="bi bi-trash3 mx-2 icon-delete-panel-admin"></i>
+                            <Button className="btn-open-modal-delete">
+                              <i
+                                className="bi bi-trash3 mx-2 icon-delete-panel-admin"
+                                onClick={() => {
+                                  onOpen();
+                                  setDeleteServiceId(service.id);
+                                }}
+                              ></i>
                             </Button>
                             <Modal isOpen={isOpen} onClose={onClose}>
                               <ModalOverlay />
                               <ModalContent>
-                                <ModalHeader>Delete service</ModalHeader>
+                                <ModalHeader>
+                                  Delete service {deleteSerivceId}
+                                </ModalHeader>
                                 <ModalCloseButton />
                                 <ModalBody>
-                                  Are you sure you want to delete this service?
+                                  Are you sure you want to delete it?
                                 </ModalBody>
 
                                 <ModalFooter>
                                   <Button
                                     className="confirm-delete"
-                                    onClick={() => handleDeleteService(id)}
+                                    onClick={() => {
+                                      handleDeleteService(service.id);
+                                      onClose();
+                                    }}
                                   >
-                                    Delete
+                                    Confirm
                                   </Button>
                                 </ModalFooter>
                               </ModalContent>

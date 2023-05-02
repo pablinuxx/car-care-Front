@@ -25,10 +25,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 function AdminCustomers() {
   const token = useSelector((state) => state.session.token);
+
+  const [deleteCustomerId, setDeleteCustomerId] = useState(null);
   const [customers, setCustomers] = useState([]);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,16 +61,21 @@ function AdminCustomers() {
     getCustomers();
   }, []);
 
-  const handleDeleteCustomer = async (id) => {
+  const handleDeleteCustomer = async () => {
     try {
-      setCustomers(customers.filter((customer) => customer.id !== id));
       await axios({
-        headers: {
-          Authorization: `bearer: ${token}`,
-        },
+        // headers: {
+        //   Authorization: `bearer: ${token}`,
+        // },
         method: "delete",
-        url: `${import.meta.env.VITE_APP_API_URL}/customers/${id}`,
+        url: `${
+          import.meta.env.VITE_APP_API_URL
+        }/customers/${deleteCustomerId}`,
       });
+      setCustomers(
+        customers.filter((customer) => customer.id !== deleteCustomerId)
+      );
+      notify();
     } catch (err) {
       console.log(err);
     }
@@ -105,8 +112,8 @@ function AdminCustomers() {
                   {customers.map((customer) => {
                     return (
                       <>
-                        <Tr>
-                          <Td key={customer.id}>{customer.id}</Td>
+                        <Tr key={customer.id}>
+                          <Td>{customer.id}</Td>
                           <Td>
                             <Avatar
                               src={
@@ -132,15 +139,17 @@ function AdminCustomers() {
                             <Button className="btn-open-modal-delete">
                               <i
                                 className="bi bi-trash3 mx-2 icon-delete-panel-admin"
-                                onClick={onOpen}
+                                onClick={() => {
+                                  onOpen();
+                                  setDeleteCustomerId(customer.id);
+                                }}
                               ></i>
                             </Button>
                             <Modal isOpen={isOpen} onClose={onClose}>
                               <ModalOverlay />
                               <ModalContent>
                                 <ModalHeader>
-                                  Delete customer {customer.firstname}{" "}
-                                  {customer.lastname}
+                                  Delete customer {deleteCustomerId}
                                 </ModalHeader>
                                 <ModalCloseButton />
                                 <ModalBody>
@@ -149,10 +158,11 @@ function AdminCustomers() {
 
                                 <ModalFooter>
                                   <Button
-                                  className="btn-modal-confirm-delete"
-                                    onClick={() =>
-                                      handleDeleteCustomer(customer.id)
-                                    }
+                                    className="confirm-delete"
+                                    onClick={() => {
+                                      handleDeleteCustomer(customer.id);
+                                      onClose();
+                                    }}
                                   >
                                     Confirm
                                   </Button>

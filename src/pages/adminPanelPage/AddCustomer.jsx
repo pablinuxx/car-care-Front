@@ -121,7 +121,7 @@ function AddCustomer() {
               </div>
             </div>
             <div className="action-confirm-login mt-4 mb-5">
-              <button className="btn-register text-white ">Create</button>
+              <button className="btn-modify">Create</button>
             </div>
           </form>
         </div>
