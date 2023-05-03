@@ -29,6 +29,8 @@ function AdminService() {
   const [services, setServices] = useState([]);
   const [deleteSerivceId, setDeleteServiceId] = useState(null);
 
+  const token = useSelector((state) => state.session.token);
+
   useEffect(() => {
     const getServices = async () => {
       const response = await axios({
@@ -36,6 +38,7 @@ function AdminService() {
         url: `${import.meta.env.VITE_APP_API_URL}/services`,
       });
       setServices(response.data);
+      vehi;
     };
     getServices();
   }, []);
@@ -74,9 +77,9 @@ function AdminService() {
               <Table variant="striped" colorScheme="gray">
                 <Thead>
                   <Tr>
-                    <Th className="table-service-title">ID</Th>
-                    <Th className="table-service-title">Name</Th>
-                    <Th className="table-service-title">Action</Th>
+                    <Th className="table-service-title text-center">ID</Th>
+                    <Th className="table-service-title text-center">Name</Th>
+                    <Th className="table-service-title text-center">Action</Th>
                   </Tr>
                 </Thead>
 
@@ -85,9 +88,11 @@ function AdminService() {
                     return (
                       <>
                         <Tr>
-                          <Td key={service.id}>{service.id}</Td>
-                          <Td>{service.name}</Td>
-                          <Td>
+                          <Td key={service.id} className="text-center">
+                            {service.id}
+                          </Td>
+                          <Td className="text-center">{service.name}</Td>
+                          <Td className="text-center">
                             <Link to={`/admin/edit/services/${service.id}`}>
                               <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
                             </Link>
@@ -103,7 +108,7 @@ function AdminService() {
                             <Modal isOpen={isOpen} onClose={onClose}>
                               <ModalOverlay />
                               <ModalContent>
-                                <ModalHeader>
+                                <ModalHeader className="modal-header">
                                   Delete service ID: {deleteSerivceId}
                                 </ModalHeader>
                                 <ModalCloseButton />

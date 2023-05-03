@@ -100,11 +100,13 @@ function AdminCustomers() {
               <Table variant="striped" colorScheme="gray">
                 <Thead>
                   <Tr>
-                    <Th className="table-service-title">ID</Th>
-                    <Th className="table-service-title">Avatar</Th>
-                    <Th className="table-service-title">Fullname</Th>
-                    <Th className="table-service-title">Email</Th>
-                    <Th className="table-service-title">Action</Th>
+                    <Th className="table-service-title text-center">ID</Th>
+                    <Th className="table-service-title text-center">Avatar</Th>
+                    <Th className="table-service-title text-center">
+                      Fullname
+                    </Th>
+                    <Th className="table-service-title text-center">Email</Th>
+                    <Th className="table-service-title text-center">Action</Th>
                   </Tr>
                 </Thead>
 
@@ -113,8 +115,8 @@ function AdminCustomers() {
                     return (
                       <>
                         <Tr key={customer.id}>
-                          <Td>{customer.id}</Td>
-                          <Td>
+                          <Td className="text-center">{customer.id}</Td>
+                          <Td className="text-center">
                             <Avatar
                               src={
                                 typeof customer.avatar === "object"
@@ -128,11 +130,11 @@ function AdminCustomers() {
                               className="navbar-avatar"
                             />
                           </Td>
-                          <Td>
+                          <Td className="text-center">
                             {customer.firstname} {customer.lastname}
                           </Td>
-                          <Td>{customer.email}</Td>
-                          <Td>
+                          <Td className="text-center">{customer.email}</Td>
+                          <Td className="text-center">
                             <Link to={`/admin/edit/customers/${customer.id}`}>
                               <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
                             </Link>
@@ -148,7 +150,7 @@ function AdminCustomers() {
                             <Modal isOpen={isOpen} onClose={onClose}>
                               <ModalOverlay />
                               <ModalContent>
-                                <ModalHeader>
+                                <ModalHeader className="modal-header">
                                   Delete customer ID: {deleteCustomerId}
                                 </ModalHeader>
                                 <ModalCloseButton />

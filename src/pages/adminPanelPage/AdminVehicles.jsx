@@ -3,7 +3,7 @@ import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -26,8 +26,11 @@ import {
 import { Button } from "@chakra-ui/react";
 
 function AdminVehicles() {
+  const { id } = useParams();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [vehicles, setVehicles] = useState([]);
+  const [deleteVehicleId, setDeleteVehicleId] = useState(null);
 
   const token = useSelector((state) => state.session.token);
 
@@ -38,101 +41,119 @@ function AdminVehicles() {
         method: "get",
         url: `${import.meta.env.VITE_APP_API_URL}/vehicles`,
       });
-      console.log(response.data);
       setVehicles(response.data);
     };
     getVehicles();
   }, []);
 
+  const handleDeleteVehicle = async (id) => {
+    try {
+      await axios({
+        // headers: { Authorization: `bearer: ${token}` },
+        method: "delete",
+        url: `${import.meta.env.VITE_APP_API_URL}/vehicles/${id}`,
+      });
+      setVehicles(vehicles.filter((vehicle) => vehicle.id !== deleteVehicleId));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <>
-      <NavbarAdmin />
-      <div className="d-flex">
-        <SidebarAdmin />
-        <section className="container p-4">
-          <div className="d-flex justify-content-between">
-            <h2>Vehicles</h2>
-            <Link to="/admin/add/vehicles">
-              <Button className="btn-add-tables" variant="outline">
-                <i className="bi bi-plus-circle me-3"></i> Add vehicles
-              </Button>
-            </Link>
-          </div>
-          <TableContainer className="mt-5">
-            <Table variant="striped" colorScheme="gray">
-              <Thead>
-                <Tr className="table-title">
-                  <Th className="table-service-title">ID</Th>
-                  <Th className="table-service-title">Name</Th>
-                  <Th className="table-service-title">Year</Th>
-                  <Th className="table-service-title">Color</Th>
-                  <Th className="table-service-title">Price</Th>
-                  <Th className="table-service-title">Brand id</Th>
-                  <Th className="table-service-title">Type id</Th>
-                  <Th className="table-service-title">Action</Th>
-                </Tr>
-              </Thead>
+    vehicles && (
+      <>
+        <NavbarAdmin />
+        <div className="d-flex">
+          <SidebarAdmin />
+          <section className="container p-4">
+            <div className="d-flex justify-content-between">
+              <h2>Vehicles</h2>
+              <Link to="/admin/add/vehicles">
+                <Button className="btn-add-tables" variant="outline">
+                  <i className="bi bi-plus-circle me-3"></i> Add vehicles
+                </Button>
+              </Link>
+            </div>
+            <TableContainer className="mt-5">
+              <Table variant="striped" colorScheme="gray">
+                <Thead>
+                  <Tr className="table-title">
+                    <Th className="table-service-title text-center">ID</Th>
+                    <Th className="table-service-title text-center">Name</Th>
+                    <Th className="table-service-title text-center">Year</Th>
+                    <Th className="table-service-title text-center">Color</Th>
+                    <Th className="table-service-title text-center">Price</Th>
+                    <Th className="table-service-title text-center">
+                      Brand id
+                    </Th>
+                    <Th className="table-service-title text-center">Type id</Th>
+                    <Th className="table-service-title text-center">Action</Th>
+                  </Tr>
+                </Thead>
 
-              <Tbody>
-                {vehicles.map((vehicle) => {
-                  return (
-                    <>
-                      <Tr>
-                        <Td key={vehicle.id}>{vehicle.id}</Td>
-                        <Td>{vehicle.name}</Td>
-                        <Td>{vehicle.year}</Td>
-                        <Td>{vehicle.color}</Td>
-                        <Td>USD {vehicle.price}</Td>
-                        <Td>{vehicle.brandId}</Td>
-                        <Td>{vehicle.typeId}</Td>
-                        <Td>
-                          <Link to={`/admin/edit/services/${vehicle.id}`}>
-                            <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
-                          </Link>
-                          <Button className="btn-open-modal-delete">
-                            <i
-                              className="bi bi-trash3 mx-2 icon-delete-panel-admin"
-                              onClick={() => {
-                                onOpen();
-                                // setDeleteServiceId(service.id);
-                              }}
-                            ></i>
-                          </Button>
-                          <Modal isOpen={isOpen} onClose={onClose}>
-                            <ModalOverlay />
-                            <ModalContent>
-                              <ModalHeader>
-                                {/* Delete service ID: {deleteSerivceId} */}
-                              </ModalHeader>
-                              <ModalCloseButton />
-                              <ModalBody>
-                                Are you sure you want to delete it?
-                              </ModalBody>
+                <Tbody>
+                  {vehicles.map((vehicle) => {
+                    return (
+                      <>
+                        <Tr>
+                          <Td key={vehicle.id} className="text-center">
+                            {vehicle.id}
+                          </Td>
+                          <Td className="text-center">{vehicle.name}</Td>
+                          <Td className="text-center">{vehicle.year}</Td>
+                          <Td className="text-center">{vehicle.color}</Td>
+                          <Td className="text-center">USD {vehicle.price}</Td>
+                          <Td className="text-center">{vehicle.brandId}</Td>
+                          <Td className="text-center">{vehicle.typeId}</Td>
+                          <Td className="text-center">
+                            <Link to={`/admin/edit/vehicles/${vehicle.id}`}>
+                              <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
+                            </Link>
+                            <Button className="btn-open-modal-delete">
+                              <i
+                                className="bi bi-trash3 mx-2 icon-delete-panel-admin"
+                                onClick={() => {
+                                  onOpen();
+                                  setDeleteVehicleId(vehicle.id);
+                                }}
+                              ></i>
+                            </Button>
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                              <ModalOverlay />
+                              <ModalContent>
+                                <ModalHeader className="modal-header">
+                                  Delete vehicle ID: {deleteVehicleId}
+                                </ModalHeader>
+                                <ModalCloseButton />
+                                <ModalBody>
+                                  Are you sure you want to delete it?
+                                </ModalBody>
 
-                              <ModalFooter>
-                                <Button
-                                  className="confirm-delete"
-                                  onClick={() => {
-                                    // handleDeleteService(vehicle.id);
-                                    onClose();
-                                  }}
-                                >
-                                  Confirm
-                                </Button>
-                              </ModalFooter>
-                            </ModalContent>
-                          </Modal>
-                        </Td>
-                      </Tr>
-                    </>
-                  );
-                })}
-              </Tbody>
-            </Table>
-          </TableContainer>
-        </section>
-      </div>
-    </>
+                                <ModalFooter>
+                                  <Button
+                                    className="confirm-delete"
+                                    onClick={() => {
+                                      handleDeleteVehicle(vehicle.id);
+                                      onClose();
+                                    }}
+                                  >
+                                    Confirm
+                                  </Button>
+                                </ModalFooter>
+                              </ModalContent>
+                            </Modal>
+                          </Td>
+                        </Tr>
+                      </>
+                    );
+                  })}
+                </Tbody>
+              </Table>
+            </TableContainer>
+          </section>
+        </div>
+      </>
+    )
   );
 }
 

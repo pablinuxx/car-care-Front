@@ -97,12 +97,13 @@
   border: #87403e !important;
 }
 
+.modal-header {
+  border-bottom: 1px solid #87403e !important;
+  margin-bottom: 1rem;
+}
+
 /* Add Vehicle Form  */
 
 .create-vehicle-select {
   color: #33414c !important;
-}
-
-.option-type-vehicles {
-  background-color: #87403e59;
 }

@@ -78,11 +78,13 @@ function AdminList() {
               <Table variant="striped" colorScheme="gray">
                 <Thead>
                   <Tr>
-                    <Th className="table-service-title">ID</Th>
-                    <Th className="table-service-title">Avatar</Th>
-                    <Th className="table-service-title">Fullname</Th>
-                    <Th className="table-service-title">Email</Th>
-                    <Th className="table-service-title">Action</Th>
+                    <Th className="table-service-title text-center">ID</Th>
+                    <Th className="table-service-title text-center">Avatar</Th>
+                    <Th className="table-service-title text-center">
+                      Fullname
+                    </Th>
+                    <Th className="table-service-title text-center">Email</Th>
+                    <Th className="table-service-title text-center">Action</Th>
                   </Tr>
                 </Thead>
 
@@ -91,8 +93,8 @@ function AdminList() {
                     return (
                       <>
                         <Tr key={admin.id}>
-                          <Td>{admin.id}</Td>
-                          <Td>
+                          <Td className="text-center">{admin.id}</Td>
+                          <Td className="text-center">
                             <Avatar
                               src={
                                 typeof admin.avatar === "object"
@@ -106,11 +108,11 @@ function AdminList() {
                               className="navbar-avatar"
                             />
                           </Td>
-                          <Td>
+                          <Td className="text-center">
                             {admin.firstname} {admin.lastname}
                           </Td>
-                          <Td>{admin.email}</Td>
-                          <Td>
+                          <Td className="text-center">{admin.email}</Td>
+                          <Td className="text-center">
                             <Link to={`/admin/edit/admin/${admin.id}`}>
                               <i className="bi bi-pencil-square mx-2 icon-modify-panel-admin"></i>
                             </Link>
@@ -126,7 +128,7 @@ function AdminList() {
                             <Modal isOpen={isOpen} onClose={onClose}>
                               <ModalOverlay />
                               <ModalContent>
-                                <ModalHeader>
+                                <ModalHeader className="modal-header">
                                   Delete administratos ID: {deleteAdminId}
                                 </ModalHeader>
                                 <ModalCloseButton />
