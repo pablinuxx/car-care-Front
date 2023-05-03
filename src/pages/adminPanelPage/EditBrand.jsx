@@ -6,11 +6,12 @@ import { useNavigate, useParams } from "react-router";
 import { useSelector } from "react-redux";
 
 function EditBrand() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const token = useSelector((state) => state.session.token);
 
   const [name, setName] = useState([]);
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
 
   const handleEditBrand = async (e) => {
     e.preventDefault();
@@ -19,16 +20,16 @@ function EditBrand() {
     formData.append("name", name);
     formData.append("image", image);
 
-    const response = await axios({
+    await axios({
       headers: {
         "Content-Type": "multipart/form-data",
-        // Authorization: `bearer: ${token}`,
+        //     Authorization: `bearer: ${token}`,
       },
       method: "patch",
       url: `${import.meta.env.VITE_APP_API_URL}/brands/${id}`,
       data: formData,
     });
-    console.log(response.data);
+    navigate("/admin/brands");
   };
 
   return (

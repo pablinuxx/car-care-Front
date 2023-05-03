@@ -23,6 +23,7 @@ import {
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 function AdminService() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -38,19 +39,18 @@ function AdminService() {
         url: `${import.meta.env.VITE_APP_API_URL}/services`,
       });
       setServices(response.data);
-      vehi;
     };
     getServices();
   }, []);
 
-  const handleDeleteService = async (id) => {
+  const handleDeleteService = async () => {
     try {
       await axios({
         // headers: {
         //   Authorization: `bearer: ${token} `,
         // },
         method: "delete",
-        url: `${import.meta.env.VITE_APP_API_URL}/services/${id}`,
+        url: `${import.meta.env.VITE_APP_API_URL}/services/${deleteSerivceId}`,
       });
       setServices(services.filter((item) => item.id !== deleteSerivceId));
     } catch (err) {

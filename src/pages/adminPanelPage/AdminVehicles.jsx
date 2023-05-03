@@ -3,7 +3,7 @@ import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -26,8 +26,6 @@ import {
 import { Button } from "@chakra-ui/react";
 
 function AdminVehicles() {
-  const { id } = useParams();
-
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [vehicles, setVehicles] = useState([]);
   const [deleteVehicleId, setDeleteVehicleId] = useState(null);
@@ -46,12 +44,12 @@ function AdminVehicles() {
     getVehicles();
   }, []);
 
-  const handleDeleteVehicle = async (id) => {
+  const handleDeleteVehicle = async () => {
     try {
       await axios({
         // headers: { Authorization: `bearer: ${token}` },
         method: "delete",
-        url: `${import.meta.env.VITE_APP_API_URL}/vehicles/${id}`,
+        url: `${import.meta.env.VITE_APP_API_URL}/vehicles/${deleteVehicleId}`,
       });
       setVehicles(vehicles.filter((vehicle) => vehicle.id !== deleteVehicleId));
     } catch (err) {

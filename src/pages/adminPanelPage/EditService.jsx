@@ -12,7 +12,7 @@ function EditService() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
 
   const handleEditService = async (e) => {
     try {

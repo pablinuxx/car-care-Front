@@ -2,34 +2,34 @@ import React, { useState } from "react";
 import NavbarAdmin from "../../components/adminPanel/NavbarAdmin";
 import SidebarAdmin from "../../components/adminPanel/SidebarAdmin";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useSelector } from "react-redux";
 
-function AddService() {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+function AddBrand() {
   const [image, setImage] = useState(null);
+  const [name, setName] = useState("");
 
+  const token = useSelector((state) => state.session.token);
   const navigate = useNavigate();
-  const loggedUser = useSelector((state) => state.session);
 
-  const handleAddService = async (e) => {
+  const handleCreateBrand = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("image", image);
 
-    const response = await axios({
+    const formData = new FormData();
+
+    formData.append("image", image);
+    formData.append("name", name);
+
+    await axios({
       headers: {
+        // Authorization: `bearer: ${token}`,
         "Content-Type": "multipart/form-data",
-        // Authorization: `bearer: ${user.token}`,
       },
       method: "post",
-      url: `${import.meta.env.VITE_APP_API_URL}/services`,
+      url: `${import.meta.env.VITE_APP_API_URL}/brands`,
       data: formData,
     });
-    navigate("/admin/services");
+    navigate("/admin/brands");
   };
 
   return (
@@ -40,9 +40,9 @@ function AddService() {
         <div className="container mt-3 d-flex">
           <form
             className="form-sign-up w-75 mx-auto"
-            onSubmit={(e) => handleAddService(e)}
+            onSubmit={(e) => handleCreateBrand(e)}
           >
-            <h2 className="text-center p-3">Create new service</h2>
+            <h2 className="text-center p-3">Create new brand</h2>
             <div className="form-container w-75 m-auto">
               <div className="form-group">
                 <input
@@ -56,20 +56,6 @@ function AddService() {
                 />
                 <label htmlFor="name" className="form-label">
                   Name
-                </label>
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  id="description"
-                  name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  className="form-input text-dark"
-                  placeholder=" "
-                />
-                <label htmlFor="description" className="form-label">
-                  Description
                 </label>
               </div>
               <div className="form-group">
@@ -92,4 +78,4 @@ function AddService() {
   );
 }
 
-export default AddService;
+export default AddBrand;
