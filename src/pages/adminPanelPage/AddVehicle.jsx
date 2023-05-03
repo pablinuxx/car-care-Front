@@ -168,7 +168,9 @@ function AddVehicle() {
                     onChange={(e) => setTypeId(e.target.value)}
                     className="create-vehicle-select"
                   >
-                    <option value={""}>Select type</option>
+                    <option value={""} className="option-type-vehicles" disabled>
+                      Select type
+                    </option>
                     <option value={1}>Suv</option>
                     <option value={2}>Auto</option>
                     <option value={3}>Pickups</option>
