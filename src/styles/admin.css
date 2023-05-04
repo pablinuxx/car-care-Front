@@ -19,6 +19,14 @@
   color: #b7cedc !important;
 }
 
+.dropdown-nav-admin {
+  color: #b7cedc !important;
+}
+
+.nav-welcome-admin {
+  margin-left: 9.8rem;
+}
+
 /* Sidebar admin */
 
 .sidebar {
