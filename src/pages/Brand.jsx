@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const Brand = () => {
@@ -99,14 +99,6 @@ const Brand = () => {
             {/* Price */}
             <div className=" p-3 border rounded">
               <h5>Price ($)</h5>
-              <div className="d-flex justify-content-between">
-                <label htmlFor="price" className="form-label">
-                  Min
-                </label>
-                <label htmlFor="price" className="form-label">
-                  Max
-                </label>
-              </div>
               <input
                 type="range"
                 className="form-range"
@@ -119,30 +111,36 @@ const Brand = () => {
             <div className="row">
               {carsList.vehicles &&
                 carsList.vehicles.map((car) => (
-                  <div className=" col-4 card  m-2 border-0" key={car.id}>
-                    <img
-                      src={
-                        typeof car.image === "object"
-                          ? `${import.meta.env.VITE_APP_API_URL}/${
-                              car.image[0]
-                            }`
-                          : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
-                              car.image
-                            }`
-                      }
-                      className="img-fluid rounded"
-                      alt={car.name}
-                    />
-                    <div className="card-body text-center p-0 ">
-                      <h5 className="card-title fs-3">USD {car.price}</h5>
+                  <Link
+                    className="col-4 "
+                    to={`/vehicle/${car.id}`}
+                    key={car.id}
+                  >
+                    <div className=" card  m-2 border-0">
+                      <img
+                        src={
+                          typeof car.image === "object"
+                            ? `${import.meta.env.VITE_APP_API_URL}/${
+                                car.image[0]
+                              }`
+                            : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
+                                car.image
+                              }`
+                        }
+                        className="img-fluid rounded"
+                        alt={car.name}
+                      />
+                      <div className="card-body text-center p-0 ">
+                        <h5 className="card-title fs-3">USD {car.price}</h5>
+                      </div>
+                      <div className="card-body">
+                        <h5 className="card-title fs-6">
+                          {car.year} | {car.kilometers} Km
+                        </h5>
+                        <h5 className="card-title text-center ">{car.name}</h5>
+                      </div>
                     </div>
-                    <div className="card-body">
-                      <h5 className="card-title fs-6">
-                        {car.year} | {car.kilometers} Km
-                      </h5>
-                      <h5 className="card-title text-center ">{car.name}</h5>
-                    </div>
-                  </div>
+                  </Link>
                 ))}
             </div>
           </div>
