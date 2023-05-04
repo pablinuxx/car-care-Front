@@ -4,20 +4,23 @@ import { Avatar } from "@chakra-ui/react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { setLoggedUser } from "../../redux/sessionReducer";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function NavbarAdmin() {
   const loggedUser = useSelector((state) => state.session);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(setLoggedUser({ token: null, user: null }));
+    navigate("/");
   };
 
   return (
     <>
       <Navbar className="navbar-admin">
         <Navbar.Brand className="navbar-text nav-welcome-admin">
-          Welcome {loggedUser.firstname} {loggedUser.lastname}
+          {loggedUser.firstname} {loggedUser.lastname}
         </Navbar.Brand>
         <div className="d-flex ms-auto me-4">
           <div className="d-flex align-items-center me-4">

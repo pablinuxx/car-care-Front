@@ -115,3 +115,12 @@
 .create-vehicle-select {
   color: #33414c !important;
 }
+
+/* Dashboard admin  */
+
+/* Card Dashboard  */
+
+.card-dashboard {
+  max-height: 22vh;
+  max-width: 20vw;
+}
