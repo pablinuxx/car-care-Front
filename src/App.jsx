@@ -27,6 +27,7 @@ import EditBrand from "./pages/adminPanelPage/EditBrand";
 import AddBrand from "./pages/adminPanelPage/AddBrand";
 import AddTypes from "./pages/adminPanelPage/AddTypes";
 import EditType from "./pages/adminPanelPage/EditType";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
         <Route path="/signup" element={<SignUpCustomer />} />;
         <Route path="/login" element={<LoginCustomer />} />;
         <Route path="/:brand" element={<Brand />} />
-        {/* Admin Panel  */}
+        <Route path="/login/admin" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/brands" element={<AdminBrand />} />
         <Route path="/admin/customers" element={<AdminCustomers />} />
