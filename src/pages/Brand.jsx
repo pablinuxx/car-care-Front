@@ -20,6 +20,13 @@ const Brand = () => {
     getCarsxBrand();
   }, [location.state.id]);
 
+  
+  const [suvType, setSuvType] = useState(true)
+  const handleChangeSUV = (event) => {
+    setSuvType(!suvType);
+    
+  }
+
   return (
     <>
       <Navbar />
@@ -33,10 +40,10 @@ const Brand = () => {
               <div className="form-check">
                 <input
                   className="form-check-input"
-                  type="checkbox"
-                  value=""
+                  type="checkbox"                  
                   id="svuType"
                   name="type"
+                  onChange={handleChangeSUV}
                 />
                 <label className="form-check-label" htmlFor="svuType">
                   SUV
