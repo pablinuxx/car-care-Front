@@ -20,7 +20,7 @@ function Home() {
           <InfoHome />
         </div>
       </div>
-      <div></div>
+
       <Footer />
     </>
   );
