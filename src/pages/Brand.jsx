@@ -1,161 +1,93 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import {
+  Card,
+  Heading,
+  Divider,
+  CardBody,
+  CardFooter,
+  Stack,
+  ButtonGroup,
+  Button,
+} from "@chakra-ui/react";
 
 const Brand = () => {
-  const location = useLocation();
-  const [carsList, setCarsList] = useState([]);
+  const { name } = useParams();
+
+  const [brands, setBrands] = useState([]);
+  // const [cars, setCars] = useState([]);
+  // const [selectedBrand, setSelectedBrand] = useState(null);
+  // const [refresh, setRefresh] = useState(false);
+
   useEffect(() => {
-    const getCarsxBrand = async () => {
+    const getCarsBrand = async () => {
       const response = await axios({
         method: "GET",
-        url: `${import.meta.env.VITE_APP_API_URL}/brands/${location.state.id}`,
+        url: `${import.meta.env.VITE_APP_API_URL}/brands/${name}`,
       });
-
-      setCarsList(response.data);
+      console.log(response.data);
+      setBrands(response.data);
+      // setCars(response.data.vehicles);
     };
 
-    getCarsxBrand();
-  }, [location.state.id]);
-
-  
-  const [suvType, setSuvType] = useState(true)
-  const handleChangeSUV = (event) => {
-    setSuvType(!suvType);
-    
-  }
+    getCarsBrand();
+  }, []);
 
   return (
-    <>
-      <Navbar />
-
-      <h1>{location.state.name}</h1>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-3">
-            <div className=" p-3 border rounded mb-2">
-              <h5>Vehicle Type</h5>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"                  
-                  id="svuType"
-                  name="type"
-                  onChange={handleChangeSUV}
-                />
-                <label className="form-check-label" htmlFor="svuType">
-                  SUV
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="autoType"
-                  name="type"
-                />
-                <label className="form-check-label" htmlFor="autoType">
-                  Auto
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="pickupsType"
-                  name="type"
-                />
-                <label className="form-check-label" htmlFor="pickupsType">
-                  PickUps
-                </label>
-              </div>
-            </div>
-
-            {/* New */}
-            <div className=" p-3 border rounded mb-2">
-              <h5>Condition </h5>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="new"
-                  name="condition"
-                />
-                <label className="form-check-label" htmlFor="new">
-                  New
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  value=""
-                  id="used"
-                  name="used"
-                />
-                <label className="form-check-label" htmlFor="used">
-                  Used
-                </label>
-              </div>
-            </div>
-            {/* Price */}
-            <div className=" p-3 border rounded">
-              <h5>Price ($)</h5>
-              <input
-                type="range"
-                className="form-range"
-                id="customRange1"
-              ></input>
-            </div>
-          </div>
-
-          <div className="col-9">
+    <div>
+      {!brands && cars.length === 0 ? (
+        <div>
+          <h4>Loading cars...</h4>
+        </div>
+      ) : (
+        <>
+          <Navbar />
+          <div className="container">
+            <h1 className="p-3 text-center">{brands.name}</h1>
             <div className="row">
-              {carsList.vehicles &&
-                carsList.vehicles.map((car) => (
-                  <Link
-                    className="col-4 "
-                    to={`/vehicle/${car.id}`}
-                    key={car.id}
-                  >
-                    <div className=" card  m-2 border-0">
-                      <img
-                        src={
-                          typeof car.image === "object"
-                            ? `${import.meta.env.VITE_APP_API_URL}/${
-                                car.image[0]
-                              }`
-                            : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
-                                car.image
-                              }`
-                        }
-                        className="img-fluid rounded"
-                        alt={car.name}
-                      />
-                      <div className="card-body text-center p-0 ">
-                        <h5 className="card-title fs-3">USD {car.price}</h5>
-                      </div>
-                      <div className="card-body">
-                        <h5 className="card-title fs-6">
-                          {car.year} | {car.kilometers} Km
-                        </h5>
-                        <h5 className="card-title text-center ">{car.name}</h5>
-                      </div>
-                    </div>
-                  </Link>
+              {brands &&
+                brands.vehicles &&
+                brands.vehicles.map((brand) => (
+                  <div key={brand.id} className="col-4">
+                    <Card maxW="sm" className="shadow mb-5">
+                      <CardBody>
+                        <img
+                          src={
+                            typeof brand.image === "object"
+                              ? `${import.meta.env.VITE_APP_API_URL}/${
+                                  brand.image[0]
+                                }`
+                              : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
+                                  brand.image
+                                }`
+                          }
+                          className="img-fluid rounded card-image"
+                          alt={brand.name}
+                        />
+                        <Heading size="md" className="mt-2">
+                          {brand.name}{" "}
+                        </Heading>
+                        {/* <p>{brand.description}</p> */}
+                        <h6>From {brand.price} USD </h6>
+                        <Divider />
+                        <Button variant="link" className="discovery-btn p-2">
+                          Discovery
+                          <i className=" bi bi-arrow-right ms-2"></i>
+                        </Button>
+                      </CardBody>
+                    </Card>
+                  </div>
                 ))}
             </div>
           </div>
-        </div>
-      </div>
 
-      <Footer />
-    </>
+          <Footer />
+        </>
+      )}
+    </div>
   );
 };
 

@@ -1,3 +1,21 @@
 .img-brand {
   width: 7rem;
 }
+
+.card-image {
+  height: 200px !important;
+  width: 100% !important;
+  object-fit: cover;
+}
+
+.discovery-btn {
+  border: 1px solid #33414c;
+  color: #33414c !important;
+  transition: 0.5s ease-in-out;
+}
+
+.discovery-btn:hover {
+  background-color: #33414c;
+  color: #ffff !important;
+  transition: 0.5s ease-in-out;
+}

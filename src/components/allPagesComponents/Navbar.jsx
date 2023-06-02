@@ -1,17 +1,37 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/navbar.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Avatar } from "@chakra-ui/react";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { setLoggedUser } from "../../redux/sessionReducer";
 import { useSelector, useDispatch } from "react-redux";
 
 function Navbar() {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.pageYOffset === 0) {
+      setIsScrolling(false);
+    } else {
+      setIsScrolling(true);
+    }
+  };
+
   const [brandsList, setBrandsList] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
   const loggedUser = useSelector((state) => state.session);
+
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const handleLogout = () => {
     dispatch(setLoggedUser({ token: null, user: null }));
@@ -27,11 +47,19 @@ function Navbar() {
       setBrandsList(response.data);
     };
     getBrands();
-  }, []);
+
+    if (selectedBrand) {
+      window.location.href = `/brands/${selectedBrand}`;
+    }
+  }, [location, selectedBrand]);
 
   return (
     <>
-      <nav className="navbar navbar-expand-md bg-body-tertiary bg-navbar ">
+      <nav
+        className={`navbar-container ${
+          isScrolling ? "navbar-dynamic" : "bg-navbar"
+        } navbar navbar-expand-md bg-body-tertiary`}
+      >
         <div className="container-fluid">
           <Link className="navbar-brand ms-4" to="#">
             <img src="/CarCare1.png" alt="car-care-logo" className="img-nav" />
@@ -49,53 +77,61 @@ function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-0 me-4 mb-2 mb-lg-0 ">
-              <li className="nav-item ">
+            <ul className="navbar-nav mb-2 mb-lg-0">
+              <li className="nav-item me-3">
                 <Link
-                  className="nav-link active text-navbar"
+                  className="nav-link active text-navbar navbar-link-dynamic"
                   aria-current="page"
                   to="/"
                 >
                   Home
                 </Link>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item dropdown me-3">
                 <Link
-                  className="nav-link dropdown-toggle text-navbar"
-                  to="#"
+                  class="nav-link dropdown-toggle navbar-link-dynamic brands-dropdown-nav"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Brands
                 </Link>
-                <div>
-                  <ul className="dropdown-menu">
-                    {brandsList &&
-                      brandsList.map((brand) => (
-                        <Link
-                          key={brand.id}
-                          to={`/${brand.name}`}
-                          state={brand}
-                        >
-                          <li className="p-1">{brand.name}</li>
-                        </Link>
-                      ))}
-                  </ul>
-                </div>
+
+                <ul className="dropdown-menu">
+                  {brandsList &&
+                    brandsList.map((brand) => (
+                      <li
+                        key={brand.id}
+                        to={`/brands/${brand.name}`}
+                        onClick={() => setSelectedBrand(brand.name)}
+                        className="dropdown-item"
+                      >
+                        {brand.name}
+                      </li>
+                    ))}
+                </ul>
               </li>
-              <li className="nav-item ">
-                <Link className="nav-link text-navbar" to="/services">
+              <li className="nav-item me-3">
+                <Link
+                  className="nav-link text-navbar navbar-link-dynamic"
+                  to="/services"
+                >
                   Services
                 </Link>
               </li>
-              <li className="nav-item ">
-                <Link className="nav-link text-navbar" to="#">
+              <li className="nav-item me-3">
+                <Link
+                  className="nav-link text-navbar navbar-link-dynamic"
+                  to="#"
+                >
                   About us
                 </Link>
               </li>
               <li className="nav-item ">
-                <Link className="nav-link text-navbar" to="/contact">
+                <Link
+                  className="nav-link text-navbar navbar-link-dynamic"
+                  to="/contact"
+                >
                   Contact
                 </Link>
               </li>
