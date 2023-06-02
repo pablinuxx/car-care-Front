@@ -2,6 +2,16 @@
   width: 7rem;
 }
 
+.vehicles-card {
+  transition: transform ease-out 0.4s, filter ease-out 0.4s !important;
+  filter: brightness(85%) !important;
+}
+
+.vehicles-card:hover {
+  filter: brightness(100%) !important;
+  transform: scale(1.1);
+}
+
 .card-image {
   height: 200px !important;
   width: 100% !important;

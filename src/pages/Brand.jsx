@@ -52,7 +52,7 @@ const Brand = () => {
                 brands.vehicles &&
                 brands.vehicles.map((brand) => (
                   <div key={brand.id} className="col-4">
-                    <Card maxW="sm" className="shadow mb-5">
+                    <Card maxW="sm" className="shadow mb-5 vehicles-card">
                       <CardBody>
                         <img
                           src={
@@ -70,7 +70,6 @@ const Brand = () => {
                         <Heading size="md" className="mt-2">
                           {brand.name}{" "}
                         </Heading>
-                        {/* <p>{brand.description}</p> */}
                         <h6>From {brand.price} USD </h6>
                         <Divider />
                         <Button variant="link" className="discovery-btn p-2">
