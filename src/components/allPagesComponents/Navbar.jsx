@@ -138,6 +138,11 @@ function Navbar() {
             </ul>
             <ul className="navbar-nav ms-auto me-4 mb-2 mb-lg-0 ">
               <div className="d-flex align-items-center">
+                {loggedUser?.isAdmin && (
+                  <div className="nav-link text-navbar navbar-link-dynamic">
+                    <li href="/admin">Admin</li>
+                  </div>
+                )}
                 <Avatar
                   src={
                     loggedUser.token
