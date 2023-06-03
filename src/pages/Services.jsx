@@ -4,6 +4,7 @@ import Footer from "../components/allPagesComponents/Footer";
 import Navbar from "../components/allPagesComponents/Navbar";
 import { InlineWidget } from "react-calendly";
 import "../styles/services.css";
+
 function Services() {
   const [services, setServices] = useState([]);
 
