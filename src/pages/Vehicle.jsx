@@ -5,34 +5,45 @@ import Footer from "../components/allPagesComponents/Footer";
 // import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "../styles/vehicle.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Vehicle() {
   //   const location = useLocation();
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [car, setCar] = useState("");
+
   useEffect(() => {
     const getCar = async () => {
       const response = await axios({
         method: "GET",
-        url: `${import.meta.env.VITE_APP_API_URL}/vehicles/${1}`,
+        url: `${import.meta.env.VITE_APP_API_URL}/vehicles/${id}`,
       });
-
+      console.log(response.data);
       setCar(response.data);
     };
 
     getCar();
   }, []);
-  console.log("prueba", car);
+
   return (
     <>
       <Navbar />
       <div className="container-fluid">
         <div className="row pb-0">
           <div className="col car-shine g-0">
-            <figure className="p-0 m-0">
+            <figure className="p-0 m-0 figure-img-vehicle">
               <img
-                src={`${import.meta.env.VITE_APP_API_URL}/${
-                  car ? car.image[0] : ""
-                }`}
+                src={
+                  typeof car.image === "object"
+                    ? `${import.meta.env.VITE_APP_API_URL}/${car.image[0]}`
+                    : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
+                        car.image
+                      }`
+                }
                 className="hero-front-image"
                 alt={car && car.name}
               />{" "}
@@ -41,31 +52,56 @@ function Vehicle() {
         </div>
         <div className="row ">
           <div className="col-6 brighten g-0">
-            <figure className="p-0 m-0 ">
+            <figure className="p-0 m-0">
               <img
-                src={`${import.meta.env.VITE_APP_API_URL}/${
-                  car ? car.image[2] : ""
-                }`}
-                className="hero-front-image"
+                src={
+                  typeof car.image === "object"
+                    ? `${import.meta.env.VITE_APP_API_URL}/${car.image[1]}`
+                    : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
+                        car.image
+                      }`
+                }
+                className="hero-front-image-interior"
                 alt={car && car.name}
               />{" "}
             </figure>
           </div>
-          <div className="col-6 information-box text-white d-flex flex-column align-items-start justify-content-start g-0">
-            <h1 className="fw-bold fs-2 ms-4 mt-5">{car && car.name}</h1>
-            <h3 className="fs-4 ms-4 mt-1">{car && car.description}</h3>
-            <h2 className="fw-bold fs-2 ms-4 mt-2">USD {car && car.price}</h2>
+          <div className="col-6 information-box text-white d-flex flex-column align-items-start justify-content-start g-0  p-3">
+            <div>
+              <div className="p-4">
+                <h1 className="fw-bold fs-2">{car && car.name}</h1>
+                <h3 className="fs-4">{car && car.description}</h3>
+                <h2 className="fw-bold fs-2">USD {car && car.price}</h2>
+                <div className="justify-content-between d-flex fs-5 mt-5 mb-5">
+                  <button className="btn-see-live" onClick={() => navigate(-1)}>
+                    <span className="fw-bold">
+                      <i className="bi bi-arrow-left mx-2"></i>Back to catalog
+                    </span>
+                  </button>
+                  <button className="btn-see-live">
+                    <span className="fw-bold">
+                      Book a test drive
+                      <i className="bi bi-arrow-right mx-2"></i>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="row">
           <div className="col car-shine g-0">
             <figure className="p-0 m-0">
               <img
-                src={`${import.meta.env.VITE_APP_API_URL}/${
-                  car ? car.image[1] : ""
-                }`}
-                className="hero-front-image"
+                src={
+                  typeof car.image === "object"
+                    ? `${import.meta.env.VITE_APP_API_URL}/${car.image[2]}`
+                    : `${import.meta.env.VITE_APP_API_URL}/img/cars/${
+                        car.image
+                      }`
+                }
                 alt={car && car.name}
+                className="hero-front-image"
               />{" "}
             </figure>
           </div>

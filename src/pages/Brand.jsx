@@ -18,9 +18,6 @@ const Brand = () => {
   const { name } = useParams();
 
   const [brands, setBrands] = useState([]);
-  // const [cars, setCars] = useState([]);
-  // const [selectedBrand, setSelectedBrand] = useState(null);
-  // const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
     const getCarsBrand = async () => {
@@ -28,9 +25,7 @@ const Brand = () => {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands/${name}`,
       });
-      console.log(response.data);
       setBrands(response.data);
-      // setCars(response.data.vehicles);
     };
 
     getCarsBrand();
@@ -72,10 +67,12 @@ const Brand = () => {
                         </Heading>
                         <h6>From {brand.price} USD </h6>
                         <Divider />
-                        <Button variant="link" className="discovery-btn p-2">
-                          Discovery
-                          <i className=" bi bi-arrow-right ms-2"></i>
-                        </Button>
+                        <Link to={`/vehicle/${brand.id}`}>
+                          <Button variant="link" className="discovery-btn p-2">
+                            Discovery
+                            <i className=" bi bi-arrow-right ms-2"></i>
+                          </Button>
+                        </Link>
                       </CardBody>
                     </Card>
                   </div>

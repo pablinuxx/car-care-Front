@@ -1,11 +1,16 @@
 /* Vehicle*/
 .hero-front-image {
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  margin: 0 auto;
-  object-fit: cover;
+  height: 570px !important;
+  width: 100% !important;
+  object-fit: cover !important;
 }
+
+.hero-front-image-interior {
+  height: 492px !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
 .information-box {
   background-color: #33414c;
 }
@@ -83,8 +88,9 @@ figure:hover + span {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
 .brighten img {
-  -webkit-filter: brightness(50%);
+  filter: brightness(50%);
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
@@ -93,5 +99,34 @@ figure:hover + span {
 }
 
 .brighten img:hover {
-  -webkit-filter: brightness(100%);
+  filter: brightness(100%);
+}
+
+/* Buttons  */
+
+.btn-see-live {
+  border: 0;
+  background-image: linear-gradient(150deg, #b7cedc, #33414c, #b7cedc);
+  border-radius: 8px;
+  color: #4c4c6d;
+  display: flex;
+  padding: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-see-live span {
+  background-color: #e8f6ef;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-see-live:hover span {
+  background: none;
+  color: #e8f6ef;
+}
+
+.btn-see-live:active {
+  scale: 0.9;
 }
