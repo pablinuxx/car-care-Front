@@ -100,6 +100,7 @@ function Navbar() {
                 <ul className="dropdown-menu">
                   {brandsList &&
                     brandsList.map((brand) => (
+                      
                       <li
                         key={brand.id}
                         to={`/brands/${brand.name}`}

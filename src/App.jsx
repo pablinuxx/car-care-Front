@@ -28,6 +28,8 @@ import AddBrand from "./pages/adminPanelPage/AddBrand";
 import AddTypes from "./pages/adminPanelPage/AddTypes";
 import EditType from "./pages/adminPanelPage/EditType";
 import AdminLogin from "./pages/AdminLogin";
+import BookingService from "./pages/BookingService";
+import PurchaseOrder from "./pages/PurchaseOrder";
 
 function App() {
   return (
@@ -43,6 +45,9 @@ function App() {
         <Route path="/login" element={<LoginCustomer />} />;
         <Route path="/brands/:name" element={<Brand />} />
         <Route path="/login/admin" element={<AdminLogin />} />
+        <Route path="/booking/service" element={<BookingService />} />
+        <Route path="/thanks" element={<PurchaseOrder />} />
+        {/* Admin  */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/brands" element={<AdminBrand />} />
         <Route path="/admin/customers" element={<AdminCustomers />} />

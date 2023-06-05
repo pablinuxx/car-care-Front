@@ -23,7 +23,7 @@ function AddService() {
     const response = await axios({
       headers: {
         "Content-Type": "multipart/form-data",
-        // Authorization: `bearer: ${user.token}`,
+        // Authorization: `bearer: ${loggedUser.token}`,
       },
       method: "post",
       url: `${import.meta.env.VITE_APP_API_URL}/services`,

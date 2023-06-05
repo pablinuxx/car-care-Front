@@ -81,7 +81,6 @@ function AdminPanel() {
             </div>
           </Card>
         </div>
-        {/* <StatisticCard /> */}
       </div>
     </>
   );

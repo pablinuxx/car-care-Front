@@ -2,8 +2,9 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../components/allPagesComponents/Footer";
 import Navbar from "../components/allPagesComponents/Navbar";
-import { InlineWidget } from "react-calendly";
+// import { InlineWidget } from "react-calendly";
 import "../styles/services.css";
+import { Link } from "react-router-dom";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -14,7 +15,6 @@ function Services() {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/services`,
       });
-      console.log(services);
       setServices(response.data);
     };
     getServices();
@@ -31,7 +31,7 @@ function Services() {
           <div className="row row-cols-1 row-cols-md-2 g-4">
             {services.map((service) => {
               return (
-                <div key={service.id} className="col ">
+                <div key={service.id} className="col">
                   <div className="card h-100">
                     <img
                       src={
@@ -55,7 +55,7 @@ function Services() {
               );
             })}
           </div>
-          <div className="mt-5 text-center">
+          {/* <div className="mt-5 text-center">
             <InlineWidget
               url="https://calendly.com/carcare-proyectate"
               pageSettings={{
@@ -68,7 +68,7 @@ function Services() {
                 height: "100%",
               }}
             />
-          </div>
+          </div> */}
         </div>
         <Footer />
       </>
