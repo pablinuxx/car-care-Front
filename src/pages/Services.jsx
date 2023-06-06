@@ -66,20 +66,6 @@ function Services() {
               );
             })}
           </div>
-          {/* <div className="mt-5 text-center">
-            <InlineWidget
-              url="https://calendly.com/carcare-proyectate"
-              pageSettings={{
-                backgroundColor: "#ffffff",
-                hideEventTypeDetails: true,
-                hideLandingPageDetails: false,
-                primaryColor: "#33414c",
-                textColor: "#33414c",
-                showFrame: false,
-                height: "100%",
-              }}
-            />
-          </div> */}
         </div>
         <Footer />
       </>
