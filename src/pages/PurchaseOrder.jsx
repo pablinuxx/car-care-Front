@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import { React } from "react";
+import { useLocation, Link } from "react-router-dom";
 import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";
 
@@ -43,7 +43,13 @@ function PurchaseOrder() {
           </div>
           <div className="text-center m-3">
             <h4 className="mt-2">We will wait for you!</h4>
-            <p className=" mt-2">Please, if you cannot attend, contact us.</p>
+
+            <p className=" mt-2">
+              Please, if you cannot attend,{" "}
+              <Link to="/contact">
+                <strong> contact us</strong>.
+              </Link>
+            </p>
           </div>
         </div>
 
