@@ -1,9 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import Navbar from "../components/allPagesComponents/Navbar";
+import Footer from "../components/allPagesComponents/Footer";
 
 function PurchaseOrder() {
   const location = useLocation();
+  console.log(location);
 
+  const service = location.state.service;
   const plate = location.state.plate;
   const carModel = location.state.plate;
   const serviceId = location.state.serviceId;
@@ -11,31 +15,39 @@ function PurchaseOrder() {
 
   console.log(serviceId);
 
-  //   useEffect(() => {
-  //     const getServices = async () => {
-  //       const response = await axios({
-  //         method: "GET",
-  //         url: `${import.meta.env.VITE_APP_API_URL}/services`,
-  //       });
-  //       setServices(response.data);
-  //     };
-  //     getServices();
-  //   }, []);
-
   return (
     plate &&
     carModel &&
     serviceId &&
     details && (
       <>
-        <div>
-          <h2>Thanks for your reservation</h2>
-          <p>Booking number: {location.state.id}</p>
+        <Navbar />
+
+        <div className="m-4 text-center">
+          <h1>Thanks for your reservation!</h1>
           <p>
-            {details.time} {details.date}
+            Booking number: <strong>{location.state.id} </strong>{" "}
           </p>
-          <p>{service.name}</p>
         </div>
+        <div className="formulary-sign-up m-5 mb-5 w-50 mx-auto">
+          <div className="m-5 text-center">
+            <h3>Service: {service.name}</h3>
+            <br />
+            <p>Time: {details.time}</p>
+            <p>Date: {details.date}</p>
+          </div>
+        </div>
+        <div className="d-flex flex-column align-items-center ">
+          <div className="info-home">
+            <i className="bi  bi-calendar-check icon-info fs-1"></i>
+          </div>
+          <div className="text-center m-3">
+            <h4 className="mt-2">We will wait for you!</h4>
+            <p className=" mt-2">Please, if you cannot attend, contact us.</p>
+          </div>
+        </div>
+
+        <Footer />
       </>
     )
   );
