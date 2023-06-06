@@ -13,7 +13,7 @@ function Contact() {
   return (
     <div>
       <Navbar />
-      <div className="container mt-5 mx-auto p-4 m-3 form-contact-info rounded shadow">
+      <div className="container mt-5 mx-auto p-4 m-3 form-contact-info rounded shadow m-5">
         <div className="row">
           <div className="col-6">
             <div className="d-flex justify-content-center m-3">
@@ -83,6 +83,10 @@ function Contact() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="m-3 text-center">
+        <h2>Thank you so much! </h2>
+        <p>we will contact you as soon as possible.</p>
       </div>
       <Footer />
     </div>

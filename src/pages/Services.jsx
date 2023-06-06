@@ -2,9 +2,9 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../components/allPagesComponents/Footer";
 import Navbar from "../components/allPagesComponents/Navbar";
-// import { InlineWidget } from "react-calendly";
 import "../styles/services.css";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -49,6 +49,17 @@ function Services() {
                     <div className="card-body">
                       <h5 className="card-title">{service.name}</h5>
                       <p className="card-text">{service.description}</p>
+                    </div>
+                    <div className="text-center m-3 ">
+                      <Link to={"/booking/service"}>
+                        <Button
+                          className="mt-3 btn btn-dark"
+                          variant="outline-light"
+                          to="#"
+                        >
+                          Date Now !
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
