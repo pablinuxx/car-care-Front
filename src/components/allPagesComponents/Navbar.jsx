@@ -89,7 +89,7 @@ function Navbar() {
               </li>
               <li className="nav-item dropdown me-3">
                 <Link
-                  class="nav-link dropdown-toggle navbar-link-dynamic brands-dropdown-nav"
+                  className="nav-link dropdown-toggle navbar-link-dynamic brands-dropdown-nav"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -100,7 +100,6 @@ function Navbar() {
                 <ul className="dropdown-menu">
                   {brandsList &&
                     brandsList.map((brand) => (
-                      
                       <li
                         key={brand.id}
                         to={`/brands/${brand.name}`}

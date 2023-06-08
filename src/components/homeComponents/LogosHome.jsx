@@ -1,8 +1,9 @@
 import React from "react";
 import "../../styles/brands.css";
+import { Link } from "react-router-dom";
 
 function LogosHome() {
-  const [getBrands, setGetBrands] = useState();
+  // const [getBrands, setGetBrands] = useState();
 
   // useEffect(() => {
   //   const getBrands = async () => {
@@ -19,49 +20,67 @@ function LogosHome() {
   // console.log(response.data);
   return (
     <>
-      <div className="container">
+      {/* <div className="container">
         <div className="row">
           <div className="d-flex mt-5 m-3 p-3 ">
-            <div
-              className="col
-          "
-            >
+            <div className="col border border-1">
               <Link to="brand">
                 <img
-                  src="img/brands/fiat.png"
+                  src="img/brands/fiat-logo.png"
                   alt="logo-fiat"
-                  className="img-brand"
+                  className="img-brand img-fluid"
                 />
               </Link>
             </div>
-            <div className="col">
+            <div className="col border border-1">
               <img
-                src="img/brands/KIA.png"
+                src="img/brands/kia-logo.png"
                 alt="logo-kia"
                 className="img-brand"
               />
             </div>
-            <div className="col">
+            <div className="col border border-1">
               <img
-                src="img/brands/5.png"
+                src="img/brands/chevrolet-logo.png"
                 alt="logo-chevrolet"
                 className="img-brand"
               />
             </div>
-            <div className="col">
+            <div className="col border border-1">
               <img
-                src="img/brands/Toyota.png"
+                src="img/brands/toyota-logo.png"
                 alt="logo-toyota"
                 className="img-brand"
               />
             </div>
 
-            <div>
+            <div className="col border border-1">
               <img
-                src="img/brands/wv.png"
+                src="img/brands/volkswagen-logo.png"
                 alt="logo-wv"
                 className="img-brand"
               />
+            </div>
+          </div>
+        </div>
+      </div> */}
+      <div className="row">
+        <div className="main-slider">
+          <div className="slide-right d-flex">
+            <div className="slide-img col">
+              <img src="img/brands/fiat-logo.png" alt="logo-fiat" />
+            </div>
+            <div className="slide-img col">
+              <img src="img/brands/kia-logo.png" alt="logo-fiat" />
+            </div>
+            <div className="slide-img col">
+              <img src="img/brands/chevrolet-logo.png" alt="logo-fiat" />
+            </div>
+            <div className="slide-img col">
+              <img src="img/brands/toyota-logo.png" alt="logo-fiat" />
+            </div>
+            <div className="slide-img col">
+              <img src="img/brands/volkswagen-logo.png" alt="logo-fiat" />
             </div>
           </div>
         </div>

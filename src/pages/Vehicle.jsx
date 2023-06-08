@@ -22,7 +22,6 @@ function Vehicle() {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/vehicles/${id}`,
       });
-      console.log(response.data);
       setCar(response.data);
     };
 
@@ -45,7 +44,7 @@ function Vehicle() {
                       }`
                 }
                 className="hero-front-image"
-                alt={car && car.name}
+                alt={car.name}
               />{" "}
             </figure>
           </div>
@@ -62,16 +61,16 @@ function Vehicle() {
                       }`
                 }
                 className="hero-front-image-interior"
-                alt={car && car.name}
+                alt={car.name}
               />{" "}
             </figure>
           </div>
           <div className="col-6 information-box text-white d-flex flex-column align-items-start justify-content-start g-0  p-3">
             <div>
               <div className="p-4">
-                <h1 className="fw-bold fs-2">{car && car.name}</h1>
-                <h3 className="fs-4">{car && car.description}</h3>
-                <h2 className="fw-bold fs-2">USD {car && car.price}</h2>
+                <h1 className="fw-bold fs-2">{car.name}</h1>
+                <h3 className="fs-4">{car.description}</h3>
+                <h2 className="fw-bold fs-2">USD {car.price}</h2>
                 <div className="justify-content-between d-flex fs-5 mt-5 mb-5">
                   <button className="btn-see-live" onClick={() => navigate(-1)}>
                     <span className="fw-bold">
@@ -100,7 +99,7 @@ function Vehicle() {
                         car.image
                       }`
                 }
-                alt={car && car.name}
+                alt={car.name}
                 className="hero-front-image"
               />{" "}
             </figure>

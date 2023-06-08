@@ -2,18 +2,19 @@ import { React } from "react";
 import { useLocation, Link } from "react-router-dom";
 import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";
+import { useSelector } from "react-redux";
 
 function PurchaseOrder() {
   const location = useLocation();
-  console.log(location);
+
+  const loggedUser = useSelector((state) => state.session);
+  console.log(loggedUser);
 
   const service = location.state.service;
   const plate = location.state.plate;
   const carModel = location.state.plate;
   const serviceId = location.state.serviceId;
   const details = location.state.details;
-
-  console.log(serviceId);
 
   return (
     plate &&
@@ -31,6 +32,9 @@ function PurchaseOrder() {
         </div>
         <div className="formulary-sign-up m-5 mb-5 w-50 mx-auto">
           <div className="m-5 text-center">
+            <h3>
+              Fullname: {loggedUser.firstname} {loggedUser.lastname}{" "}
+            </h3>
             <h3>Service: {service.name}</h3>
             <br />
             <p>Time: {details.time}</p>

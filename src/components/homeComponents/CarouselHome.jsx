@@ -17,7 +17,7 @@ function CarouselHome() {
     };
     getBrands();
   }, []);
-  console.log(brands);
+
   return (
     brands && (
       <>
