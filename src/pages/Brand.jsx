@@ -3,13 +3,7 @@ import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";
 import { Link, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import {
-  Card,
-  Heading,
-  Divider,
-  CardBody,
-  Button,
-} from "@chakra-ui/react";
+import { Card, Heading, Divider, CardBody, Button } from "@chakra-ui/react";
 
 const Brand = () => {
   const { name } = useParams();
@@ -39,12 +33,15 @@ const Brand = () => {
           <Navbar />
           <div className="container">
             <h1 className="p-3 text-center">{brands.name}</h1>
-            <div className="row">
+            <div className="row ">
               {brands &&
                 brands.vehicles &&
                 brands.vehicles.map((brand) => (
-                  <div key={brand.id} className="col-4">
-                    <Card maxW="sm" className="shadow mb-5 vehicles-card">
+                  <div key={brand.id} className="col-12 col-md-6 col-lg-4">
+                    <Card
+                      maxW="sm"
+                      className="shadow mb-5 vehicles-card mx-auto"
+                    >
                       <CardBody>
                         <img
                           src={
