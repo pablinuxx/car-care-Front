@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/brands.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 function LogosHome() {
@@ -28,24 +28,24 @@ function LogosHome() {
   return (
     brands && (
       <>
-        <div className="row">
-          <div className="main-slider">
-            <div className="slide-right">
-              {/* <Link
-                onClick={() => setSelectedBrand(brands.name)}
-                to={`/brands/${brands.name}`}
-              > */}
-              <div className="slide-img">
-                {brands.map((brand) => (
-                  <img
-                    key={brand.id}
-                    src={`${import.meta.env.VITE_APP_API_URL}/${brand.logo}`}
-                    onClick={() => setSelectedBrand(brand.name)}
-                    to={`/brands/${brand.name}`}
-                  />
-                ))}
-              </div>
-              {/* </Link> */}
+        <div className="container">
+          <div className="row">
+            <div className="slide-img">
+              {brands.map((brand) => (
+                <img
+                  key={brand.id}
+                  src={
+                    typeof brand.logo === "object"
+                      ? `${import.meta.env.VITE_APP_API_URL}/${brand.logo[0]}`
+                      : `${import.meta.env.VITE_APP_API_URL}/img/brands/${
+                          brand.logo
+                        }`
+                  }
+                  onClick={() => setSelectedBrand(brand.name)}
+                  to={`/brands/${brand.name}`}
+                  className="img-fluid logo-img"
+                />
+              ))}
             </div>
           </div>
         </div>

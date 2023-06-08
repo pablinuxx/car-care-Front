@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 function AddBrand() {
   const [image, setImage] = useState(null);
+  const [logo, setLogo] = useState(null);
   const [name, setName] = useState("");
 
   const token = useSelector((state) => state.session.token);
@@ -19,6 +20,7 @@ function AddBrand() {
 
     formData.append("image", image);
     formData.append("name", name);
+    formData.append("logo", logo);
 
     await axios({
       headers: {
@@ -66,6 +68,15 @@ function AddBrand() {
                   onChange={(e) => setImage(e.target.files[0])}
                 />
                 <label htmlFor="image"></label>
+              </div>
+              <div className="form-group">
+                <input
+                  type="file"
+                  id="logo"
+                  name="logo"
+                  onChange={(e) => setLogo(e.target.files[0])}
+                />
+                <label htmlFor="logo"></label>
               </div>
             </div>
             <div className="action-confirm-login mt-4 mb-5">

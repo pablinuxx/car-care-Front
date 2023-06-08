@@ -6,7 +6,7 @@ html {
 
 .slide-img {
   display: flex;
-  width: 20%;
+  width: 20% !important;
 }
 
 .slide-img img {
