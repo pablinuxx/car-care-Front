@@ -1,91 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/brands.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
 
 function LogosHome() {
-  // const [getBrands, setGetBrands] = useState();
+  const [brands, setBrands] = useState([]);
+  const [selectedBrand, setSelectedBrand] = useState(null);
 
-  // useEffect(() => {
-  //   const getBrands = async () => {
-  //     const response = await axios({
-  //       method: "GET",
-  //       url: `${import.meta.env.VITE_APP_API_URL}/brands`,
-  //     });
+  const location = useLocation();
 
-  //     setGetBrands(response.data);
-  //   };
-  //   getBrands();
-  // }, []);
+  useEffect(() => {
+    const getBrands = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `${import.meta.env.VITE_APP_API_URL}/brands`,
+      });
+      console.log(response.data);
+      setBrands(response.data);
+    };
+    getBrands();
 
-  // console.log(response.data);
+    if (selectedBrand) {
+      window.location.href = `/brands/${selectedBrand}`;
+    }
+  }, [location, selectedBrand]);
+
   return (
-    <>
-      {/* <div className="container">
+    brands && (
+      <>
         <div className="row">
-          <div className="d-flex mt-5 m-3 p-3 ">
-            <div className="col border border-1">
-              <Link to="brand">
-                <img
-                  src="img/brands/fiat-logo.png"
-                  alt="logo-fiat"
-                  className="img-brand img-fluid"
-                />
-              </Link>
-            </div>
-            <div className="col border border-1">
-              <img
-                src="img/brands/kia-logo.png"
-                alt="logo-kia"
-                className="img-brand"
-              />
-            </div>
-            <div className="col border border-1">
-              <img
-                src="img/brands/chevrolet-logo.png"
-                alt="logo-chevrolet"
-                className="img-brand"
-              />
-            </div>
-            <div className="col border border-1">
-              <img
-                src="img/brands/toyota-logo.png"
-                alt="logo-toyota"
-                className="img-brand"
-              />
-            </div>
-
-            <div className="col border border-1">
-              <img
-                src="img/brands/volkswagen-logo.png"
-                alt="logo-wv"
-                className="img-brand"
-              />
+          <div className="main-slider">
+            <div className="slide-right">
+              {/* <Link
+                onClick={() => setSelectedBrand(brands.name)}
+                to={`/brands/${brands.name}`}
+              > */}
+              <div className="slide-img">
+                {brands.map((brand) => (
+                  <img
+                    key={brand.id}
+                    src={`${import.meta.env.VITE_APP_API_URL}/${brand.logo}`}
+                    onClick={() => setSelectedBrand(brand.name)}
+                    to={`/brands/${brand.name}`}
+                  />
+                ))}
+              </div>
+              {/* </Link> */}
             </div>
           </div>
         </div>
-      </div> */}
-      <div className="row">
-        <div className="main-slider">
-          <div className="slide-right d-flex">
-            <div className="slide-img col">
-              <img src="img/brands/fiat-logo.png" alt="logo-fiat" />
-            </div>
-            <div className="slide-img col">
-              <img src="img/brands/kia-logo.png" alt="logo-fiat" />
-            </div>
-            <div className="slide-img col">
-              <img src="img/brands/chevrolet-logo.png" alt="logo-fiat" />
-            </div>
-            <div className="slide-img col">
-              <img src="img/brands/toyota-logo.png" alt="logo-fiat" />
-            </div>
-            <div className="slide-img col">
-              <img src="img/brands/volkswagen-logo.png" alt="logo-fiat" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+      </>
+    )
   );
 }
 

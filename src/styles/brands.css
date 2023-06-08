@@ -4,6 +4,11 @@ html {
   overflow-x: hidden !important;
 }
 
+.slide-img {
+  display: flex;
+  width: 20%;
+}
+
 .slide-img img {
   cursor: pointer;
   filter: grayscale(1);
@@ -17,22 +22,18 @@ html {
 }
 
 @media (min-width: 227px) and (max-width: 400px) {
-  .slide-right {
-    flex-direction: column;
-  }
-
   .slide-img {
+    display: flex;
+    flex-direction: column;
     width: 75%;
     margin: auto;
   }
 }
 
 @media (min-width: 401px) and (max-width: 575px) {
-  .slide-right {
-    flex-direction: column;
-  }
-
   .slide-img {
+    display: flex;
+    flex-direction: column;
     width: 62%;
     margin: auto;
   }
