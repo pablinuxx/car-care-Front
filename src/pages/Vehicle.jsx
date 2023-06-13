@@ -50,7 +50,7 @@ function Vehicle() {
           </div>
         </div>
         <div className="row ">
-          <div className="col-6 brighten g-0">
+          <div className="col-12 col-md-6 brighten g-0 ">
             <figure className="p-0 m-0">
               <img
                 src={
@@ -65,25 +65,25 @@ function Vehicle() {
               />{" "}
             </figure>
           </div>
-          <div className="col-6 information-box text-white d-flex flex-column align-items-start justify-content-start g-0  p-3">
+          <div className="col-12 col-md-6 information-box text-white d-flex flex-column align-items-start justify-content-start g-0  p-3">
             <div>
               <div className="p-4">
                 <h1 className="fw-bold fs-2">{car.name}</h1>
                 <h3 className="fs-4">{car.description}</h3>
                 <h2 className="fw-bold fs-2">USD {car.price}</h2>
-                <div className="justify-content-between d-flex fs-5 mt-5 mb-5">
-                  <button className="btn-see-live" onClick={() => navigate(-1)}>
-                    <span className="fw-bold">
-                      <i className="bi bi-arrow-left mx-2"></i>Back to catalog
-                    </span>
-                  </button>
-                  <button className="btn-see-live">
-                    <span className="fw-bold">
-                      Book a test drive
-                      <i className="bi bi-arrow-right mx-2"></i>
-                    </span>
-                  </button>
-                </div>
+              </div>
+              <div className="justify-content-evenly d-flex  fs-5  mt-5 mb-5">
+                <button className="btn-see-live" onClick={() => navigate(-1)}>
+                  <span className="fw-bold">
+                    <i className="bi bi-arrow-left mx-2"></i>Back to catalog
+                  </span>
+                </button>
+                <button className="btn-see-live">
+                  <span className="fw-bold">
+                    Book a test drive
+                    <i className="bi bi-arrow-right mx-2"></i>
+                  </span>
+                </button>
               </div>
             </div>
           </div>
