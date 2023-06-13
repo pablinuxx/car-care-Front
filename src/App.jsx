@@ -30,6 +30,8 @@ import EditType from "./pages/adminPanelPage/EditType";
 import AdminLogin from "./pages/AdminLogin";
 import BookingService from "./pages/BookingService";
 import PurchaseOrder from "./pages/PurchaseOrder";
+import BookingTestDrive from "./pages/BookingTestDrive";
+import Error from "./pages/Error";
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
         <Route path="/login" element={<LoginCustomer />} />;
         <Route path="/brands/:name" element={<Brand />} />
         <Route path="/login/admin" element={<AdminLogin />} />
+        <Route path="/booking/testdrive" element={<BookingTestDrive />} />
         <Route path="/booking/service" element={<BookingService />} />
         <Route path="/thanks" element={<PurchaseOrder />} />
         {/* Admin  */}
@@ -68,7 +71,7 @@ function App() {
         <Route path="/admin/add/types" element={<AddTypes />} />
         <Route path="/admin/edit/types/:id" element={<EditType />} />
         {/* Page not found */}
-        <Route path="*" element={<p>Error 404 page not found!</p>} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </>
   );
