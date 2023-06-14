@@ -67,7 +67,7 @@ function BookingTestDrive() {
             className="form-sign-up w-75 mx-auto"
             onSubmit={(e) => handleBooking(e)}
           >
-            <h2 className="text-center p-3">Booking your services</h2>
+            <h2 className="text-center p-3">Book your test drive</h2>
             <div className="form-container w-75 m-auto">
               <div className="form-group">
                 <select
