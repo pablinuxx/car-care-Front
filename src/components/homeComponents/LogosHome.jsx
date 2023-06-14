@@ -32,7 +32,7 @@ function LogosHome() {
           <div className="row m-auto mt-2 d-flex query-col">
             {brands.map((brand) => (
               <div className="col col-sm-4 col-md-2">
-                <div className="border slide-img">
+                <div className="slide-img">
                   <img
                     key={brand.id}
                     src={

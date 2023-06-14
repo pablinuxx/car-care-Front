@@ -21,12 +21,6 @@ html {
   }
 }
 
-/* @media (min-width: 576px) and (max-width: 991.99px) {
-  .slide-img {
-
-  }
-} */
-
 .slide-img img {
   cursor: pointer;
   filter: grayscale(1);
@@ -37,24 +31,6 @@ html {
   filter: grayscale(0);
   transform: scale(1.2);
 }
-
-/* /* @media (min-width: 227px) and (max-width: 400px) {
-  .slide-img {
-    display: flex;
-    flex-direction: column;
-    width: 2% !important;
-    margin: auto;
-  }
-} */
-
-/* @media (min-width: 240px) and (max-width: 575px) {
-  .slide-img {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 62%;
-    margin: auto;
-  }
-} */
 
 /* Brand vehicle  */
 
