@@ -5,15 +5,32 @@ html {
 }
 
 .slide-img {
-  display: flex;
-  width: 20% !important;
+  width: 100% !important;
+  height: 100% !important;
 }
+
+@media (min-width: 240px) and (max-width: 575px) {
+  .query-col {
+    flex-direction: column !important;
+  }
+
+  .slide-img {
+    width: 50% !important;
+    margin: auto !important;
+    margin-top: 1.5rem !important;
+  }
+}
+
+/* @media (min-width: 576px) and (max-width: 991.99px) {
+  .slide-img {
+
+  }
+} */
 
 .slide-img img {
   cursor: pointer;
   filter: grayscale(1);
   transition: 0.4s linear transform 0.1s;
-  padding: 2rem;
 }
 
 .slide-img img:hover {
@@ -21,23 +38,23 @@ html {
   transform: scale(1.2);
 }
 
-@media (min-width: 227px) and (max-width: 400px) {
+/* /* @media (min-width: 227px) and (max-width: 400px) {
   .slide-img {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    width: 2% !important;
     margin: auto;
   }
-}
+} */
 
-@media (min-width: 401px) and (max-width: 575px) {
+/* @media (min-width: 240px) and (max-width: 575px) {
   .slide-img {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
     width: 62%;
     margin: auto;
   }
-}
+} */
 
 /* Brand vehicle  */
 
