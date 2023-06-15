@@ -28,23 +28,25 @@ function LogosHome() {
   return (
     brands && (
       <>
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
-            <div className="slide-img">
+            <div className="d-flex justify-content-between mobile-logo">
               {brands.map((brand) => (
-                <img
-                  key={brand.id}
-                  src={
-                    typeof brand.logo === "object"
-                      ? `${import.meta.env.VITE_APP_API_URL}/${brand.logo[0]}`
-                      : `${import.meta.env.VITE_APP_API_URL}/img/brands/${
-                          brand.logo
-                        }`
-                  }
-                  onClick={() => setSelectedBrand(brand.name)}
-                  to={`/brands/${brand.name}`}
-                  className="img-fluid logo-img"
-                />
+                <div className="col slide-img px-3">
+                  <img
+                    key={brand.id}
+                    src={
+                      typeof brand.logo === "object"
+                        ? `${import.meta.env.VITE_APP_API_URL}/${brand.logo[0]}`
+                        : `${import.meta.env.VITE_APP_API_URL}/img/brands/${
+                            brand.logo
+                          }`
+                    }
+                    onClick={() => setSelectedBrand(brand.name)}
+                    to={`/brands/${brand.name}`}
+                    className="img-fluid"
+                  />
+                </div>
               ))}
             </div>
           </div>
