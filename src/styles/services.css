@@ -1,9 +1,38 @@
-/* .hero-service {
-  height: 7rem;
-  background: #87403e;
-  font-weight: 700;
-  align-items: center;
-  justify-content: center;
+.hero-service {
+  margin-top: 0px !important;
+  background: linear-gradient(#87403e 20%, #fff 60%) !important;
+  filter: contrast(110%);
+}
+
+.img-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.btn-date-now {
+  border: 0;
+  background-image: linear-gradient(150deg, #b7cedc, #33414c, #b7cedc);
+  border-radius: 8px;
+  color: #4c4c6d;
   display: flex;
-  opacity: 0.4;
-} */
+  padding: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-date-now span {
+  background-color: #e8f6ef;
+  padding: 5px 8px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-date-now:hover span {
+  background: none;
+  color: #e8f6ef;
+}
+
+.btn-date-now:active {
+  scale: 0.9;
+}

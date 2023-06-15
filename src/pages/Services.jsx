@@ -2,7 +2,6 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../components/allPagesComponents/Footer";
 import Navbar from "../components/allPagesComponents/Navbar";
-import "../styles/services.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -24,15 +23,16 @@ function Services() {
     services && (
       <>
         <Navbar />
-        <div className="mt-4 text-center hero-service">
-          <h2>SERVICES</h2>
-        </div>
-        <div className="container mt-5 mb-5">
-          <div className="row row-cols-1 row-cols-md-2 g-4">
-            {services.map((service) => {
-              return (
-                <div key={service.id} className="col">
-                  <div className="card h-100">
+        {/* <div className="mt-4 text-center"> */}
+        {/* </div> */}
+        <div className="container-fluid hero-service m-auto">
+          <h2 className="text-center p-3">SERVICES</h2>
+          {services.map((service) => {
+            return (
+              <>
+                {/* row-cols-1 row-cols-md-2 g-4 */}
+                <div className="row d-flex mb-2">
+                  <div className="col-7 p-2 img-box" key={service.id}>
                     <img
                       src={
                         typeof service.image === "object"
@@ -43,28 +43,34 @@ function Services() {
                               service.image
                             }`
                       }
-                      className="card-img-top"
+                      className="rounded"
                       alt="service"
                     />
-                    <div className="card-body">
-                      <h5 className="card-title">{service.name}</h5>
-                      <p className="card-text">{service.description}</p>
-                    </div>
-                    <div className="text-center m-3 ">
+                  </div>
+                  <div className="col-5 p-2">
+                    <h5>{service.name}</h5>
+                    <p>{service.description}</p>
+                    <div className="text-center">
                       <Link to={"/booking/service"}>
-                        <Button
+                        {/* <Button
                           className="mt-3 btn btn-dark"
                           variant="outline-light"
                         >
                           Date Now !
-                        </Button>
+                        </Button> */}
+                        <button className="btn-date-now">
+                          <span className="fw-bold">
+                            Date Now !
+                            {/* <i className="bi bi-arrow-right mx-2"></i> */}
+                          </span>
+                        </button>
                       </Link>
                     </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </>
+            );
+          })}
         </div>
         <Footer />
       </>
