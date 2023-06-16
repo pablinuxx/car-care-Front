@@ -28,11 +28,12 @@ function LogosHome() {
   return (
     brands && (
       <>
-        <div className="container mt-5">
-          <div className="row">
-            <div className="d-flex justify-content-between mobile-logo">
-              {brands.map((brand) => (
-                <div className="col slide-img px-3">
+        <div className="container">
+          <div className="row m-auto mt-2 d-flex query-col">
+            {/* <div className="d-flex"> */}
+            {brands.map((brand) => (
+              <div className="col col-sm-4 col-md-2 mt-3">
+                <div className="slide-img">
                   <img
                     key={brand.id}
                     src={
@@ -44,11 +45,12 @@ function LogosHome() {
                     }
                     onClick={() => setSelectedBrand(brand.name)}
                     to={`/brands/${brand.name}`}
-                    className="img-fluid"
+                    className="img-fluid m-auto"
                   />
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+            {/* </div> */}
           </div>
         </div>
       </>

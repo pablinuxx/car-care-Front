@@ -4,10 +4,10 @@ html {
   overflow-x: hidden !important;
 }
 
-/* .slide-img {
-  display: flex;
-  width: 20% !important;
-} */
+.slide-img {
+  width: 100% !important;
+  height: 100% !important;
+}
 
 .slide-img img {
   cursor: pointer;
@@ -20,26 +20,17 @@ html {
   transform: scale(1.2);
 }
 
-@media (max-width: 670px) {
-  .mobile-logo {
-    display: flex !important;
+@media (min-width: 240px) and (max-width: 575px) {
+  .query-col {
     flex-direction: column !important;
-    align-items: center !important;
   }
+
   .slide-img {
-    width: 15rem;
-    padding: 1rem;
+    width: 50% !important;
+    margin: auto !important;
+    margin-top: 1.5rem !important;
   }
 }
-
-/* @media (min-width: 401px) and (max-width: 575px) {
-  .slide-img {
-    display: flex;
-    flex-direction: column;
-    width: 62%;
-    margin: auto;
-  }
-} */
 
 /* Brand vehicle  */
 
