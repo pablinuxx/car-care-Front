@@ -3,7 +3,6 @@ import axios from "axios";
 import Footer from "../components/allPagesComponents/Footer";
 import Navbar from "../components/allPagesComponents/Navbar";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -30,9 +29,8 @@ function Services() {
           {services.map((service) => {
             return (
               <>
-                {/* row-cols-1 row-cols-md-2 g-4 */}
-                <div className="row d-flex mb-2">
-                  <div className="col-7 p-2 img-box" key={service.id}>
+                <div className="row d-flex mb-2" key={service.id}>
+                  <div className="col-7 p-2 img-box">
                     <img
                       src={
                         typeof service.image === "object"

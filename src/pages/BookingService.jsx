@@ -13,9 +13,9 @@ function BookingService() {
 
   const [services, setServices] = useState([]);
 
-  const [serviceId, setServiceId] = useState(null);
-  const [date, setDate] = useState(null);
-  const [time, setTime] = useState(null);
+  const [serviceId, setServiceId] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [carModel, setCarModel] = useState("");
   const [plate, setPlate] = useState("");
 

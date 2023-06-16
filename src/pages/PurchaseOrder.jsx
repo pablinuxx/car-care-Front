@@ -8,7 +8,6 @@ function PurchaseOrder() {
   const location = useLocation();
 
   const loggedUser = useSelector((state) => state.session);
-  console.log(loggedUser);
 
   const service = location.state.service;
   const plate = location.state.plate;

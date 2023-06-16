@@ -72,7 +72,7 @@ function AdminVehicles() {
                 </Button>
               </Link>
             </div>
-            <TableContainer className="mt-5">
+            <div className="table-responsive mt-3">
               <Table variant="striped" colorScheme="gray">
                 <Thead>
                   <Tr className="table-title">
@@ -147,7 +147,7 @@ function AdminVehicles() {
                   })}
                 </Tbody>
               </Table>
-            </TableContainer>
+            </div>
           </section>
         </div>
       </>

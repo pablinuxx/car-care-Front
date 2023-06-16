@@ -15,7 +15,6 @@ function LogosHome() {
         method: "GET",
         url: `${import.meta.env.VITE_APP_API_URL}/brands`,
       });
-      console.log(response.data);
       setBrands(response.data);
     };
     getBrands();
@@ -32,10 +31,9 @@ function LogosHome() {
           <div className="row m-auto mt-2 d-flex query-col">
             {/* <div className="d-flex"> */}
             {brands.map((brand) => (
-              <div className="col col-sm-4 col-md-2 mt-3">
+              <div className="col col-sm-4 col-md-2 mt-3 m-auto" key={brand.id}>
                 <div className="slide-img">
                   <img
-                    key={brand.id}
                     src={
                       typeof brand.logo === "object"
                         ? `${import.meta.env.VITE_APP_API_URL}/${brand.logo[0]}`

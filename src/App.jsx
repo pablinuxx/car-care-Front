@@ -32,6 +32,8 @@ import BookingService from "./pages/BookingService";
 import PurchaseOrder from "./pages/PurchaseOrder";
 import BookingTestDrive from "./pages/BookingTestDrive";
 import Error from "./pages/Error";
+import Reservation from "./pages/Reservation";
+import AdminBookings from "./pages/adminPanelPage/AdminBookings";
 
 function App() {
   return (
@@ -50,6 +52,7 @@ function App() {
         <Route path="/booking/testdrive" element={<BookingTestDrive />} />
         <Route path="/booking/service" element={<BookingService />} />
         <Route path="/thanks" element={<PurchaseOrder />} />
+        <Route path="/reservations" element={<Reservation />} />
         {/* Admin  */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/brands" element={<AdminBrand />} />
@@ -70,6 +73,7 @@ function App() {
         <Route path="/admin/add/brands" element={<AddBrand />} />
         <Route path="/admin/add/types" element={<AddTypes />} />
         <Route path="/admin/edit/types/:id" element={<EditType />} />
+        <Route path="/admin/bookings" element={<AdminBookings />} />
         {/* Page not found */}
         <Route path="*" element={<Error />} />
       </Routes>

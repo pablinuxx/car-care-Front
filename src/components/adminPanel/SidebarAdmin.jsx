@@ -47,6 +47,12 @@ function SidebarAdmin() {
             <span className="nav-link-text">Types</span>
           </Link>
         </li>
+        <li className="nav-item-sidebar">
+          <Link to="/admin/bookings" className="nav-link">
+            <i className="bi bi-journal icon-sidebar mx-2"></i>
+            <span className="nav-link-text">Bookings</span>
+          </Link>
+        </li>
         <div className="divided mt-3"></div>
         <li className="nav-item-sidebar mt-3">
           <Link to="/" className="nav-link">

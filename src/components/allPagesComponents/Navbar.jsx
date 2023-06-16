@@ -165,7 +165,9 @@ function Navbar() {
                 <NavDropdown id="basic-nav-dropdown">
                   {loggedUser.token ? (
                     <>
-                      <NavDropdown.Item href="#">Reservations</NavDropdown.Item>
+                      <NavDropdown.Item href="/reservations">
+                        Reservations
+                      </NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item onClick={handleLogout}>
                         Logout
