@@ -4,9 +4,6 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-// const loggedUser = useSelector((state) => state.session);
-// console.log(loggedUser.token);
-
 function Reservation() {
   const [bookings, setBookings] = useState([]);
   const loggedUser = useSelector((state) => state.session);
@@ -39,8 +36,8 @@ function Reservation() {
               <Thead>
                 <Tr>
                   <Th className="table-service-title">Service</Th>
-                  <Th className="table-service-title">Action</Th>
-                  <Th className="table-service-title">Status</Th>
+                  <Th className="table-service-title text-center">Status</Th>
+                  <Th className="table-service-title text-end">Action</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -49,13 +46,15 @@ function Reservation() {
                     <>
                       <Tr key={booking.id}>
                         <Td>{booking.serviceName}</Td>
-                        <Td>
-                          <button>view more</button>
-                        </Td>
-                        <Td>
+                        <Td className="text-center">
                           <span className="badge text-bg-success">
                             {booking.dataValues.status}
                           </span>
+                        </Td>
+                        <Td className="text-end">
+                          <button className="btn-reservation btn-effect">
+                            <span className="btn-text">view more</span>
+                          </button>
                         </Td>
                       </Tr>
                     </>

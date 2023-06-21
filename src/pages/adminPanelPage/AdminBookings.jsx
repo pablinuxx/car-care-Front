@@ -24,14 +24,15 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
+import { useParams } from "react-router-dom";
 
 function AdminBookings() {
   const token = useSelector((state) => state.session.token);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const { id } = useParams();
-
+  const { id } = useParams();
   const [newStatus, setNewStatus] = useState("");
+  const [selectedBooking, setSelectedBookings] = useState(null);
   const [bookings, setBookings] = useState([]);
 
   const handleChangeStatus = async () => {
@@ -41,8 +42,10 @@ function AdminBookings() {
           Authorization: `bearer ${token} `,
         },
         method: "patch",
-        url: `${import.meta.env.VITE_APP_API_URL}/bookings/${newStatus}/status`,
-        data: { newStatus },
+        url: `${import.meta.env.VITE_APP_API_URL}/bookings/${id}/status`,
+        data: {
+          newStatus,
+        },
       });
     } catch (error) {
       console.log(error);
@@ -100,6 +103,7 @@ function AdminBookings() {
                                 className="bi bi-pencil ms-2"
                                 onClick={() => {
                                   onOpen();
+                                  setSelectedBookings(booking.id);
                                 }}
                               ></i>
                             </Button>
@@ -114,18 +118,24 @@ function AdminBookings() {
                                   Change the status:
                                   <form className="mt-3">
                                     <select
-                                      value={newStatus}
-                                      onChange={(e) =>
-                                        setNewStatus(e.target.value)
-                                      }
+                                    // value={}
+                                    // onChange={() =>
+                                    //   setNewStatus(e.target.value)
+                                    // }
                                     >
                                       <option value={""}>
                                         Select a status
                                       </option>
-                                      <option value={1}>Confirmed</option>
-                                      <option value={2}>Progressing</option>
-                                      <option value={3}>Done</option>
-                                      <option value={4}>Cancelled</option>
+                                      <option value={"Confirmed"}>
+                                        Confirmed
+                                      </option>
+                                      <option value={"Progressing"}>
+                                        Progressing
+                                      </option>
+                                      <option value={"Done"}>Done</option>
+                                      <option value={"Cancelled"}>
+                                        Cancelled
+                                      </option>
                                     </select>
                                   </form>
                                 </ModalBody>
@@ -133,7 +143,7 @@ function AdminBookings() {
                                   <Button
                                     className="confirm-delete"
                                     onClick={() => {
-                                      handleChangeStatus(newStatus.id);
+                                      handleChangeStatus(newStatus);
                                       onClose();
                                     }}
                                   >

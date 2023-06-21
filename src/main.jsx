@@ -6,6 +6,7 @@ import "./styles/brands.css";
 import "./styles/navbar.css";
 import "./styles/index.css";
 import "./styles/services.css";
+import "./styles/reservation.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider } from "react-redux";
