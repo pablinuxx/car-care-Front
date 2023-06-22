@@ -35,3 +35,78 @@
 .btn-reservation .btn-text:hover {
   color: #fff;
 }
+
+/* Reservation details  */
+
+.img-reservation-details img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.col-details {
+  display: grid;
+  place-content: center;
+  text-align: left;
+  background-color: #b7cedcc8;
+}
+
+.btn-back {
+  background: #fff; /* color de fondo */
+  color: #87403e; /* color de fuente */
+  border: 2px solid #87403e; /* tamaño y color de borde */
+  /* padding: 16px 20px; */
+  padding: 0.5rem;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-back:hover {
+  color: #fff;
+}
+
+.btn-back::after {
+  content: "";
+  background: #87403e;
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: 0;
+  right: 0;
+  top: -100%;
+  bottom: 100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+.btn-back:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+
+/* No reservation  */
+
+.no-reservation {
+  margin-top: 2.7rem;
+  width: 60%;
+  padding: 1rem 1.2rem 1rem 1.2rem;
+  background-color: #2323230e;
+}
+
+.no-reservation-title {
+  margin-bottom: 0.8rem;
+  font-size: 2.15rem;
+}
+
+.no-reservation-message {
+  color: rgb(135, 135, 135);
+  font-size: 0.93rem;
+  font-weight: 200;
+}

@@ -3,6 +3,7 @@ import Navbar from "../components/allPagesComponents/Navbar";
 import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function Reservation() {
   const [bookings, setBookings] = useState([]);
@@ -17,7 +18,6 @@ function Reservation() {
         method: "get",
         url: `${import.meta.env.VITE_APP_API_URL}/bookings/${loggedUser.id}`,
       });
-      console.log(response.data);
       setBookings(response.data);
     };
     getBookings();
@@ -29,7 +29,7 @@ function Reservation() {
         <Navbar />
         <div className="container">
           <h3 className="text-center mt-3">
-            {loggedUser.firstname} {loggedUser.lastname} This is your bookings
+            {loggedUser.firstname} {loggedUser.lastname} reservations
           </h3>
           <div className="table-responsive mt-3">
             <Table variant="striped" colorScheme="gray">
@@ -52,9 +52,11 @@ function Reservation() {
                           </span>
                         </Td>
                         <Td className="text-end">
-                          <button className="btn-reservation btn-effect">
-                            <span className="btn-text">view more</span>
-                          </button>
+                          <Link to={`/reservations/${booking.dataValues.id}`}>
+                            <button className="btn-reservation btn-effect">
+                              <span className="btn-text">view more</span>
+                            </button>
+                          </Link>
                         </Td>
                       </Tr>
                     </>
@@ -62,6 +64,16 @@ function Reservation() {
                 })}
               </Tbody>
             </Table>
+            {bookings.length === 0 && (
+              <div className="no-reservation rounded mx-auto">
+                <h2 className="no-reservation-title text-center">
+                  You haven't booked anything yet!
+                </h2>
+                <h2 className="no-reservation-message text-center">
+                  When available, you will see your reservations here.
+                </h2>
+              </div>
+            )}
           </div>
         </div>
       </>

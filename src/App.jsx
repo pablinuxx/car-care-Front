@@ -34,6 +34,7 @@ import BookingTestDrive from "./pages/BookingTestDrive";
 import Error from "./pages/Error";
 import Reservation from "./pages/Reservation";
 import AdminBookings from "./pages/adminPanelPage/AdminBookings";
+import ReservationIdDetails from "./pages/ReservationIdDetails";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <Route path="/booking/service" element={<BookingService />} />
         <Route path="/thanks" element={<PurchaseOrder />} />
         <Route path="/reservations" element={<Reservation />} />
+        <Route path="/reservations/:id" element={<ReservationIdDetails />} />
         {/* Admin  */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/brands" element={<AdminBrand />} />

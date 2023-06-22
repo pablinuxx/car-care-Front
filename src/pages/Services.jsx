@@ -50,17 +50,8 @@ function Services() {
                     <p>{service.description}</p>
                     <div className="text-center">
                       <Link to={"/booking/service"}>
-                        {/* <Button
-                          className="mt-3 btn btn-dark"
-                          variant="outline-light"
-                        >
-                          Date Now !
-                        </Button> */}
                         <button className="btn-date-now">
-                          <span className="fw-bold">
-                            Date Now !
-                            {/* <i className="bi bi-arrow-right mx-2"></i> */}
-                          </span>
+                          <span className="fw-bold">Date Now !</span>
                         </button>
                       </Link>
                     </div>
