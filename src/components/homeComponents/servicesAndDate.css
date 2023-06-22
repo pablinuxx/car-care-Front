@@ -1,24 +1,34 @@
-.services-box {
-  height: 450px;
+.col-service {
   background-color: #87403e;
 }
-.data-box {
-  height: 450px;
+.col-cars {
   background-color: #33414c;
 }
-.to-services-btn {
-  width: 10rem;
-}
+
 .img-carrousel {
   display: flex;
   align-items: center;
 }
+
 .img-carrousel img {
   max-height: 650px;
   min-height: 300px;
   margin: 0 auto;
   object-fit: cover;
 }
-.prueba {
-  height: 250px;
+
+@media (max-width: 625px) {
+  .row-query {
+    flex-direction: column;
+  }
+
+  .col-service {
+    width: 100% !important;
+    padding: 1rem !important;
+  }
+
+  .col-cars {
+    width: 100% !important;
+    padding: 1rem !important;
+  }
 }

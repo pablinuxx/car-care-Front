@@ -3,8 +3,7 @@ import Navbar from "../components/allPagesComponents/Navbar";
 import Footer from "../components/allPagesComponents/Footer";
 import LogosHome from "../components/homeComponents/LogosHome";
 import InfoHome from "../components/homeComponents/InfoHome";
-import GoServices from "../components/homeComponents/GoServices";
-import GoDate from "../components/homeComponents/GoDate";
+import ServiceAndCars from "../components/homeComponents/ServiceAndCars";
 import Carousel from "../components/homeComponents/CarouselHome";
 
 function Home() {
@@ -15,8 +14,7 @@ function Home() {
       <LogosHome />
       <div className="container-fluid mt-5 mb-5">
         <div className="row ">
-          <GoServices />
-          <GoDate />
+          <ServiceAndCars />
           <InfoHome />
         </div>
       </div>
