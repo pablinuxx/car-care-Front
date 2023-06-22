@@ -30,27 +30,8 @@ function AdminBookings() {
   const token = useSelector((state) => state.session.token);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { id } = useParams();
-  const [newStatus, setNewStatus] = useState("");
   const [selectedBooking, setSelectedBookings] = useState(null);
   const [bookings, setBookings] = useState([]);
-
-  const handleChangeStatus = async () => {
-    try {
-      const response = await axios({
-        headers: {
-          Authorization: `bearer ${token} `,
-        },
-        method: "patch",
-        url: `${import.meta.env.VITE_APP_API_URL}/bookings/${id}/status`,
-        data: {
-          newStatus,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     const getAllBookings = async () => {
@@ -93,11 +74,11 @@ function AdminBookings() {
                     return (
                       <>
                         <Tr key={booking.id}>
-                          <Td>{booking.dataValues.id}</Td>
-                          <Td>{booking.customerName}</Td>
-                          <Td>{booking.dataValues.serviceId}</Td>
+                          <Td>{booking.id}</Td>
+                          <Td>{booking.customerId}</Td>
+                          <Td>{booking.serviceId}</Td>
                           <Td>
-                            {booking.dataValues.status}
+                            {booking.status}
                             <Button className="btn-open-modal-delete">
                               <i
                                 className="bi bi-pencil ms-2"
@@ -143,7 +124,6 @@ function AdminBookings() {
                                   <Button
                                     className="confirm-delete"
                                     onClick={() => {
-                                      handleChangeStatus(newStatus);
                                       onClose();
                                     }}
                                   >
