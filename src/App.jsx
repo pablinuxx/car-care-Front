@@ -35,6 +35,7 @@ import Error from "./pages/Error";
 import Reservation from "./pages/Reservation";
 import AdminBookings from "./pages/adminPanelPage/AdminBookings";
 import ReservationIdDetails from "./pages/ReservationIdDetails";
+import AllVehicles from "./pages/AllVehicles";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Route path="/thanks" element={<PurchaseOrder />} />
         <Route path="/reservations" element={<Reservation />} />
         <Route path="/reservations/:id" element={<ReservationIdDetails />} />
+        <Route path="/total/vehicles" element={<AllVehicles />} />
         {/* Admin  */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/brands" element={<AdminBrand />} />
