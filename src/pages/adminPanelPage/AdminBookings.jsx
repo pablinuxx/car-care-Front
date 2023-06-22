@@ -24,7 +24,6 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
 
 function AdminBookings() {
   const token = useSelector((state) => state.session.token);
